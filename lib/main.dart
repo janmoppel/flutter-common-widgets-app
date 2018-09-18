@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// debugPaintSizeEnabled=true; // 渲染debug
+//    debugPaintSizeEnabled=true; // 渲染debug
     return new MaterialApp(
       title: 'Demo01:',
       theme: new ThemeData(
