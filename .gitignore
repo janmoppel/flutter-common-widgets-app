@@ -2,4 +2,4 @@ ios/*
 build/*
 .idea/*
 .packages
-.idea/*
+.idea/
