@@ -13,6 +13,8 @@
 * [flutter-widgets的官方目录集]( http://doc.flutter-dev.cn/widgets/ )
 
 ### commit 提交规范
+* $git cz
+
 * 用于说明 commit 的类别，只允许使用下面7个标识。
 
   - feat：新功能（feature）
