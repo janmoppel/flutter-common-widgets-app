@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../components/Input.dart';
 import '../common/eventBus.dart';
-
+import '../routers/application.dart';
 // 使用
 import 'todo.dart';
 
@@ -23,11 +23,16 @@ class SecondPageState extends State<SecondPage> {
   TextEditingController controller;
   String active =  'test';
   String data = '无';
+  final List<ListItem> listData = [];
+
 
   void initState() {
     eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
         show(data.text)
     );
+    for (int i = 0; i < 20; i++) {
+      listData.add(new ListItem("我是-$i", Icons.cake));
+    }
   }
 
   void show(String val) {
@@ -45,30 +50,19 @@ class SecondPageState extends State<SecondPage> {
             backgroundColor: const Color(0xFFF0EEEF),
             title: new Text('WIDGET',style: TextStyle(color: Colors.black))
         ),
-        body: new Container(
-          child: new Column(
-            children: <Widget>[
-              new TextField(
-                controller: controller,
-                onChanged: _onChanged,
-              ),
-              new Input(active: active),
-              new Center(
-                  child: new Column(
-                      children: <Widget>[
-                        new Container(
-                          padding: new EdgeInsets.only(bottom: 15.0),
-                          child:  new Text('子组件1'),
-                        ),
-                        new Text('这是第2个界面'),
-                        new Text('子组件2传来的值:$data'),
-                      ]
-                  )
-              )
-            ],
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, //每行2个
+              mainAxisSpacing: 0.0, //主轴(竖直)方向间距
+              crossAxisSpacing: 0.0, //纵轴(水平)方向间距
+              childAspectRatio: 0.8 //纵轴缩放比例
           ),
-        )
-    );
+          itemCount: listData.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListItemWidget(listData[index], index);
+          },
+        ),
+      );
   }
 
   void _onChanged(String value) {
@@ -79,4 +73,54 @@ class SecondPageState extends State<SecondPage> {
     });
   }
 }
+
+
+class ListItem {
+  final String title;
+  final IconData iconData;
+
+  ListItem(this.title, this.iconData);
+}
+
+
+class ListItemWidget extends StatelessWidget {
+  final ListItem listItem;
+  final int index;
+
+  ListItemWidget(this.listItem, this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        color: Colors.green,
+        child: Container(
+
+            decoration:  new BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+                bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+              ),
+            ),
+            child: new RaisedButton(
+                onPressed: () {
+                  Application.router.navigateTo(context, "/demo?name=test${this.index}");
+                },
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Icon(
+                      Icons.star,
+                      color: Colors.red[500],
+                    ),
+                    Text('测试'),
+                  ],
+                )
+            )
+        )
+    );
+  }
+}
+
 

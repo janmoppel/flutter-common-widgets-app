@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 import './Views/FirstPage.dart';
 import './Views/SecondPage.dart';
 import './Views/ThirdPage.dart';
 import './Views/FourthPage.dart';
+import './routers/routers.dart';
+import './routers/application.dart';
+
 ///import './Views/Detail.dart';
 
 
@@ -10,6 +14,12 @@ import 'package:flutter/rendering.dart';
 // import 'dart:developer';
 
 class MyApp extends StatelessWidget {
+  MyApp() {
+    print("constructor");
+    final router = new Router();
+    Routes.configureRoutes(router);
+    Application.router = router;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: new MyHomePage(),
-      routes: <String, WidgetBuilder>{
-        ///'/datail': (BuildContext context) => new Detail();
-      }
+      onGenerateRoute: Application.router.generator,
     ) ;
   }
 }
