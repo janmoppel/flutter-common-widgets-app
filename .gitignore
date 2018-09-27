@@ -1,4 +1,5 @@
-build/
-.idea/
+ios/*
+build/*
+.idea/*
 .packages
-
+.idea/
