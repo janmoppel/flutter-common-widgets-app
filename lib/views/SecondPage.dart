@@ -23,11 +23,16 @@ class SecondPageState extends State<SecondPage> {
   TextEditingController controller;
   String active =  'test';
   String data = '无';
+  final List<ListItem> listData = [];
+
 
   void initState() {
     eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
         show(data.text)
     );
+    for (int i = 0; i < 20; i++) {
+      listData.add(new ListItem("我是-$i", Icons.cake));
+    }
   }
 
   void show(String val) {
@@ -40,48 +45,23 @@ class SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("MediaQueryData.size ${MediaQuery.of(context).size.width}");
-//    double itemWidth = MediaQuery.of(context).size.width;
-//    double itemHeight = 50.0;
     return new Scaffold( // scaffold是一个脚手架，可以就理解为一个html，appBar就是上面的那个titlebar，body
         appBar: new AppBar(
             backgroundColor: const Color(0xFFF0EEEF),
             title: new Text('WIDGET',style: TextStyle(color: Colors.black))
         ),
-        body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this would produce 2 rows.
-          crossAxisCount: 4,
-          // Generate 100 Widgets that display their index in the List
-          children: List.generate(4, (index) {
-              return Container(
-                  decoration:  new BoxDecoration(
-                    border: Border(
-
-                      right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-                      bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-                    ),
-                  ),
-                  child: new RaisedButton(
-                    onPressed: () {
-                      Application.router.navigateTo(context, "/demo?name=test");
-                    },
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Icon(
-                          Icons.star,
-                          color: Colors.red[500],
-                        ),
-                        Text('测试'),
-                      ],
-                    )
-                  )
-              );
-            }
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, //每行2个
+              mainAxisSpacing: 0.0, //主轴(竖直)方向间距
+              crossAxisSpacing: 0.0, //纵轴(水平)方向间距
+              childAspectRatio: 0.8 //纵轴缩放比例
           ),
-        )
+          itemCount: listData.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListItemWidget(listData[index], index);
+          },
+        ),
       );
   }
 
@@ -93,3 +73,54 @@ class SecondPageState extends State<SecondPage> {
     });
   }
 }
+
+
+class ListItem {
+  final String title;
+  final IconData iconData;
+
+  ListItem(this.title, this.iconData);
+}
+
+
+class ListItemWidget extends StatelessWidget {
+  final ListItem listItem;
+  final int index;
+
+  ListItemWidget(this.listItem, this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        color: Colors.green,
+        child: Container(
+
+            decoration:  new BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+                bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+              ),
+            ),
+            child: new RaisedButton(
+                onPressed: () {
+                  Application.router.navigateTo(context, "/demo?name=test${this.index}");
+                },
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Icon(
+                      Icons.star,
+                      color: Colors.red[500],
+                    ),
+                    Text('测试'),
+                  ],
+                )
+            )
+        )
+    );
+  }
+}
+
+
