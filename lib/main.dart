@@ -48,7 +48,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
 
   TabController controller;
-
+  bool isSearch = true;
   String data = '无';
   String data2ThirdPage = '这是传给ThirdPage的值';
 
@@ -79,14 +79,31 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-//          backgroundColor: Colors.orangeAccent,
-          title:new Text('FLUTTER 菜鸟手册')
-//          title: new TabBar(
-//            controller: controller,
-//            tabs: myTabs,    //使用Tab类型的数组呈现Tab标签
-//            indicatorColor: Colors.white,
-//            isScrollable: true,
-//          ),
+          leading: null,
+          automaticallyImplyLeading: true,
+          title: isSearch ? new TextField(
+              onEditingComplete: () {
+                this.setState(() {
+                  isSearch = false;
+                });
+              },
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(10.0),
+                hintText: '请输入关键词',
+                  isDense: true,
+              )
+          ) : new Text('1277773!'),
+          actions: <Widget>[
+            new IconButton(
+              icon: new Icon(Icons.search),
+              tooltip: 'Repair it',
+              onPressed: () {
+                this.setState(() {
+                  isSearch = true;
+                });
+              }
+            ),
+          ],
         ),
       body: new TabBarView(
           controller: controller,
@@ -127,3 +144,4 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     });
   }
 }
+
