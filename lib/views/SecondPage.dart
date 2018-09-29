@@ -45,24 +45,18 @@ class SecondPageState extends State<SecondPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold( // scaffold是一个脚手架，可以就理解为一个html，appBar就是上面的那个titlebar，body
-        appBar: new AppBar(
-            backgroundColor: const Color(0xFFF0EEEF),
-            title: new Text('WIDGET',style: TextStyle(color: Colors.black))
-        ),
-        body: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, //每行2个
-              mainAxisSpacing: 0.0, //主轴(竖直)方向间距
-              crossAxisSpacing: 0.0, //纵轴(水平)方向间距
-              childAspectRatio: 0.8 //纵轴缩放比例
-          ),
-          itemCount: listData.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListItemWidget(listData[index], index);
-          },
-        ),
-      );
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, //每行2个
+          mainAxisSpacing: 0.0, //主轴(竖直)方向间距
+          crossAxisSpacing: 0.0, //纵轴(水平)方向间距
+          childAspectRatio: 0.8 //纵轴缩放比例
+      ),
+      itemCount: listData.length,
+      itemBuilder: (BuildContext context, int index) {
+        return ListItemWidget(listData[index], index);
+      },
+    );
   }
 
   void _onChanged(String value) {
