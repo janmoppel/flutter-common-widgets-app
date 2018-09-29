@@ -11,11 +11,10 @@ import './routers/application.dart';
 
 
 import 'package:flutter/rendering.dart';
-// import 'dart:developer';
+
 
 class MyApp extends StatelessWidget {
   MyApp() {
-    print("constructor");
     final router = new Router();
     Routes.configureRoutes(router);
     Application.router = router;
@@ -48,24 +47,35 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
 
   TabController controller;
-  bool isSearch = true;
+  bool isSearch = false;
   String data = '无';
   String data2ThirdPage = '这是传给ThirdPage的值';
-
-  final List<Widget> myTabs = [
-    new Tab(text: 'Tab1'),
-    new Tab(text: 'Tab2'),
-    new Tab(text: 'Tab3'),
-    new Tab(text: 'Tab4'),
-    new Tab(text: 'Tab5'),
-    new Tab(text: 'Tab6')
+  String appBarTitle = tabData[0]['text'];
+  static List tabData = [
+    {'text':'业界动态','icon': new Icon(Icons.language)},
+    {'text':'WIDGET','icon': new Icon(Icons.extension)},
+    {'text':'官网地址','icon': new Icon(Icons.home)},
+    {'text':'关于手册','icon': new Icon(Icons.favorite)}
   ];
+
+
+
+  List<Widget> myTabs = [];
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller = new TabController(vsync: this, length:4);// 这里的length 决定有多少个底导 submenus
+    controller = new TabController(initialIndex: 0, vsync: this, length:4);// 这里的length 决定有多少个底导 submenus
+    for (int i = 0; i < tabData.length; i++) {
+      myTabs.add(new Tab(text: tabData[i]['text'], icon: tabData[i]['icon'] ));
+    }
+    controller.addListener(() {
+      if (controller.indexIsChanging) {
+        _onTabChange();
+      }
+    });
   }
 
   @override
@@ -78,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+//        resizeToAvoidBottomPadding: false,
         appBar: new AppBar(
           leading: null,
           automaticallyImplyLeading: true,
@@ -89,10 +100,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               },
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(10.0),
-                hintText: '请输入关键词',
+                hintText: '请输入搜索词',
                   isDense: true,
               )
-          ) : new Text('1277773!'),
+          ) : new Text(appBarTitle),
           actions: <Widget>[
             new IconButton(
               icon: new Icon(Icons.search),
@@ -121,23 +132,20 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             height:65.0,
             //color:const Color(0xFFF0EEEF),
             child: new TabBar(
-            controller:controller,
-            indicatorColor: Colors.blue, //tab标签的下划线颜色
-            labelColor:const Color(0xFF000000),
-            tabs:<Tab>[
-              //new Tab(text:'业界动态1$data',icon: new Icon(Icons.language,color:const Color(0xFF000000))),
-              new Tab(text:'业界动态1',icon: new Icon(Icons.language)),
-              new Tab(text:'WIDGET',icon: new Icon(Icons.extension)),
-              new Tab(text:'官网地址',icon: new Icon(Icons.home)),
-              new Tab(text:'关于手册',icon: new Icon(Icons.favorite)),
-            ]
+              controller:controller,
+              indicatorColor: Colors.blue, //tab标签的下划线颜色
+              labelColor:const Color(0xFF000000),
+              tabs: this.myTabs
           )
         )
       )
-
     );
   }
-
+  void _onTabChange() {
+    this.setState(() {
+      appBarTitle = tabData[controller.index]['text'];
+    });
+  }
   void _onDataChange(val) {
     setState(() {
       data = val;
