@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import './Views/FirstPage.dart';
-import './Views/SecondPage.dart';
-import './Views/ThirdPage.dart';
-import './Views/FourthPage.dart';
-import './routers/routers.dart';
-import './routers/application.dart';
-
-///import './Views/Detail.dart';
-
-
 import 'package:flutter/rendering.dart';
-// import 'dart:developer';
+
+import 'Views/FirstPage.dart';
+import 'Views/widgetPage.dart';
+import 'Views/ThirdPage.dart';
+import 'Views/FourthPage.dart';
+import 'routers/routers.dart';
+import 'routers/application.dart';
+import 'model/provider.dart';
 
 class MyApp extends StatelessWidget {
   MyApp() {
-    print("constructor");
     final router = new Router();
     Routes.configureRoutes(router);
     Application.router = router;
@@ -23,7 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    debugPaintSizeEnabled=true; // 渲染debug
+
     return new MaterialApp(
       title: 'Demo01:',
       theme: new ThemeData(
@@ -35,7 +31,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void main() => runApp(new MyApp()) ;
+var db;
+void main() async{
+  final provider = new Provider();
+  await provider.init(true);
+  db = provider.db;
+  runApp(new MyApp());
+}
 
 
 class MyHomePage extends StatefulWidget {
@@ -92,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           controller: controller,
           children: <Widget>[
             new FirstPage(),
-            new SecondPage(),
+            new WidgetPage(db),
             new ThirdPage(data2ThirdPage: data2ThirdPage, callback: (val) => _onDataChange(val)),
             new FourthPage()
           ]

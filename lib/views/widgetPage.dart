@@ -4,35 +4,33 @@ import 'package:flutter/material.dart';
 import '../components/Input.dart';
 import '../common/eventBus.dart';
 import '../routers/application.dart';
-// 使用
-import 'todo.dart';
-
-@todo('seth', 'make this do something')
-void doSomething() {
-  print('do something');
-}
+import '../model/cat.dart';
 
 
-class SecondPage extends StatefulWidget {
+class WidgetPage extends StatefulWidget {
+  final db;
+  CatModel catModel;
+  WidgetPage(this.db): catModel = new CatModel(db),super();
+
   @override
-  SecondPageState createState() => new SecondPageState();
+  SecondPageState createState() => new SecondPageState(catModel);
 }
 
-class SecondPageState extends State<SecondPage> {
+class SecondPageState extends State<WidgetPage> {
+  CatModel catModel;
+  SecondPageState(this.catModel): super();
 
   TextEditingController controller;
   String active =  'test';
   String data = '无';
-  final List<ListItem> listData = [];
-
+  List<Map> listData = [];
 
   void initState() {
+    renderCats();
+
     eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
         show(data.text)
     );
-    for (int i = 0; i < 20; i++) {
-      listData.add(new ListItem("我是-$i", Icons.cake));
-    }
   }
 
   void show(String val) {
@@ -42,14 +40,20 @@ class SecondPageState extends State<SecondPage> {
     });
   }
 
+  void renderCats(){
+    catModel.mainList().then((List data){
+      if(data.isNotEmpty){
+        setState(() {
+          listData = data;
+        });
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold( // scaffold是一个脚手架，可以就理解为一个html，appBar就是上面的那个titlebar，body
-        appBar: new AppBar(
-            backgroundColor: const Color(0xFFF0EEEF),
-            title: new Text('WIDGET',style: TextStyle(color: Colors.black))
-        ),
+    return new Scaffold(
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, //每行2个
@@ -66,7 +70,6 @@ class SecondPageState extends State<SecondPage> {
   }
 
   void _onChanged(String value) {
-    doSomething();
     setState(() {
       active = value;
       data = '90';
@@ -75,22 +78,15 @@ class SecondPageState extends State<SecondPage> {
 }
 
 
-class ListItem {
-  final String title;
-  final IconData iconData;
-
-  ListItem(this.title, this.iconData);
-}
-
-
 class ListItemWidget extends StatelessWidget {
-  final ListItem listItem;
+  final Map<String, dynamic> data;
   final int index;
 
-  ListItemWidget(this.listItem, this.index);
+  ListItemWidget(this.data, this.index);
 
   @override
   Widget build(BuildContext context) {
+    String desc = data['desc'] != null ? data['desc'] : '';
     return new Container(
         color: Colors.green,
         child: Container(
@@ -110,11 +106,8 @@ class ListItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Icon(
-                      Icons.star,
-                      color: Colors.red[500],
-                    ),
-                    Text('测试'),
+                    Text(data['name']),
+                    Text(desc),
                   ],
                 )
             )
