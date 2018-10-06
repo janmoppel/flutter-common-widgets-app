@@ -9,6 +9,8 @@ import 'Views/FourthPage.dart';
 import 'routers/routers.dart';
 import 'routers/application.dart';
 import 'model/provider.dart';
+import 'widget/SearchInput.dart';
+
 
 class MyApp extends StatelessWidget {
   MyApp() {
@@ -80,16 +82,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-//          backgroundColor: Colors.orangeAccent,
-          title:new Text('FLUTTER 菜鸟手册')
-//          title: new TabBar(
-//            controller: controller,
-//            tabs: myTabs,    //使用Tab类型的数组呈现Tab标签
-//            indicatorColor: Colors.white,
-//            isScrollable: true,
-//          ),
-        ),
+      appBar: new AppBar(
+          backgroundColor: Colors.blue,
+          title: new SearchInput((value){},(value){},(){})
+      ),
       body: new TabBarView(
           controller: controller,
           children: <Widget>[
@@ -100,19 +96,16 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ]
       ),
       bottomNavigationBar: new Material(
-        //color:Colors.orangeAccent,
         color: const Color(0xFFF0EEEF),   //底部导航栏主题颜色
         child: new Container(
             height:65.0,
-            //color:const Color(0xFFF0EEEF),
             child: new TabBar(
             controller:controller,
             indicatorColor: Colors.blue, //tab标签的下划线颜色
             labelColor:const Color(0xFF000000),
             tabs:<Tab>[
-              //new Tab(text:'业界动态1$data',icon: new Icon(Icons.language,color:const Color(0xFF000000))),
-              new Tab(text:'业界动态1',icon: new Icon(Icons.language)),
-              new Tab(text:'WIDGET',icon: new Icon(Icons.extension)),
+              new Tab(text:'业界动态',icon: new Icon(Icons.language)),
+              new Tab(text:'组件',icon: new Icon(Icons.extension)),
               new Tab(text:'官网地址',icon: new Icon(Icons.home)),
               new Tab(text:'关于手册',icon: new Icon(Icons.favorite)),
             ]

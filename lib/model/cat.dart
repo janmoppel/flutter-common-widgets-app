@@ -17,6 +17,8 @@ class CatModel extends BaseModel{
   final String table = 'cat';
   CatModel(db): super(db);
 
+  /// 获取一级类目
+  ///
   Future<List> mainList() async{
     return await this.query(table,where : 'parentId=0');
   }
