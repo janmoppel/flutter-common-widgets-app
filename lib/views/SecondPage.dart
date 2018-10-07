@@ -98,7 +98,7 @@ class ListItemWidget extends StatelessWidget {
             ),
             child: new RaisedButton(
                 onPressed: () {
-                  Application.router.navigateTo(context, "/demo?name=test${this.index}");
+                  Application.router.navigateTo(context, "/demo?name=demo${this.index}");
                 },
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
