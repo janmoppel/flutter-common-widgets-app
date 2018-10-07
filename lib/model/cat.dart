@@ -1,7 +1,7 @@
 import 'base.dart';
 import 'dart:async';
 
-abstract class Cat{
+abstract class CatInterface{
     int get id;
     //类目名称
     String get name;

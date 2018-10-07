@@ -1,7 +1,7 @@
 import 'base.dart';
 import 'dart:async';
 
-abstract class Widget{
+abstract class WidgetInterface{
     int get id;
     //组件英文名
     String get name;
@@ -20,4 +20,10 @@ abstract class Widget{
 class WidgetModel extends BaseModel{
   final String table = 'widget';
   WidgetModel(db): super(db);
+
+  ///搜索组件
+  ///@param key
+  Future<List> search(String key) async{
+    return await this.query(table,where : "name like '%$key%' OR cnName like '%$key%'");
+  }
 }

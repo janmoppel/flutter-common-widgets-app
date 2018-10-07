@@ -9,7 +9,9 @@ import 'Views/FourthPage.dart';
 import 'routers/routers.dart';
 import 'routers/application.dart';
 import 'model/provider.dart';
+import 'model/widget.dart';
 import 'widget/SearchInput.dart';
+import 'common/Style.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -34,6 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 var db;
+WidgetModel widgetModel;
 void main() async{
   final provider = new Provider();
   await provider.init(true);
@@ -77,14 +80,29 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     controller.dispose();
     super.dispose();
   }
+  Widget buildSearchInput(){
+    return new SearchInput((value) async{
+      if(value != ''){
+        widgetModel = new WidgetModel(db);
+        List<Map> list = await widgetModel.search(value);
+        print('list $list');
+        return list.map((item) => new MaterialSearchResult<String>(
+          value: item['name'],
+          text: item['name'] + '       ' + item['cnName'],
+        )).toList();
+      }else{
+        return null;
+      }
 
+    },(value){},(){});
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          backgroundColor: Colors.blue,
-          title: new SearchInput((value){},(value){},(){})
+          backgroundColor: new Color(AppColor.white),
+          title: buildSearchInput()
       ),
       body: new TabBarView(
           controller: controller,
