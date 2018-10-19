@@ -88,7 +88,6 @@ class ListItemWidget extends StatelessWidget {
     return new Container(
         color: Colors.green,
         child: Container(
-
             decoration:  new BoxDecoration(
               color: Colors.white,
               border: Border(
