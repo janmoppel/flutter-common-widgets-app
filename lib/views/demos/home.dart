@@ -62,7 +62,13 @@ List<DemosPoint> getDemosPoints() {
       routerName: SliverDemo.routerName,
       buildRouter: (BuildContext context) => SliverDemo(),
     ),
-
+    DemosPoint(
+      title: 'process',
+      icon: Icons.perm_camera_mic,
+      category: Basic,
+      routerName: ProgressDemo.routeName,
+      buildRouter: (BuildContext context) => ProgressDemo()
+    ),
     DemosPoint(
       title: 'radio',
       icon: Icons.category,

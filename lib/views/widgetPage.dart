@@ -5,20 +5,22 @@ import 'demos/home.dart';
 
 import '../common/eventBus.dart';
 import '../routers/application.dart';
-// 使用
-import 'todo.dart';
+import '../model/cat.dart';
 
-@todo('seth', 'make this do something')
-void doSomething() {
-  print('do something');
-}
 
-class SecondPage extends StatefulWidget {
+
+class WidgetPage extends StatefulWidget {
+  final db;
+  CatModel catModel;
+  WidgetPage(this.db): catModel = new CatModel(db),super();
+
   @override
-  SecondPageState createState() => new SecondPageState();
+  SecondPageState createState() => new SecondPageState(catModel);
 }
 
-class SecondPageState extends State<SecondPage> {
+class SecondPageState extends State<WidgetPage> {
+  CatModel catModel;
+  SecondPageState(this.catModel): super();
 
   TextEditingController controller;
   String active =  'test';
@@ -26,7 +28,25 @@ class SecondPageState extends State<SecondPage> {
 
   final List<DemoCategory> categories = DemoCategorys.toList();
 
+  List<Map> listData = [];
 
+  void initState() {
+    renderCats();
+
+//    eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
+//    );
+  }
+
+
+  void renderCats(){
+    catModel.mainList().then((List data){
+      if(data.isNotEmpty){
+        setState(() {
+          listData = data;
+        });
+      }
+    });
+  }
 
 
   @override
@@ -49,7 +69,6 @@ class SecondPageState extends State<SecondPage> {
   }
 
   void _onChanged(String value) {
-    doSomething();
     setState(() {
       active = value;
       data = '90';
@@ -58,15 +77,8 @@ class SecondPageState extends State<SecondPage> {
 }
 
 
-class ListItem {
-  final String title;
-  final IconData iconData;
-
-  ListItem(this.title, this.iconData);
-}
-
-
 class ListItemWidget extends StatelessWidget {
+
   final DemoCategory category;
 
   ListItemWidget({this.category});

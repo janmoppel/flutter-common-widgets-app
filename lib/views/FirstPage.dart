@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../components/List.dart';
-import '../components/Pagination.dart';
+import 'package:flutter_rookie_book/components/List.dart';
+import 'package:flutter_rookie_book/components/Pagination.dart';
 
 
 class FirstPage extends StatefulWidget {
@@ -23,6 +23,7 @@ class FirstPageState extends State<FirstPage> {
             child: new List(),
           ),
         ]
+
     );
   }
 }

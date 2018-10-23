@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import './Views/FirstPage.dart';
-import './Views/SecondPage.dart';
-import './Views/ThirdPage.dart';
-import './Views/FourthPage.dart';
-import './routers/routers.dart';
-import './routers/application.dart';
-
-///import './Views/Detail.dart';
-
-
 import 'package:flutter/rendering.dart';
+
+import 'views//FirstPage.dart';
+import 'views/widgetPage.dart';
+import 'views/ThirdPage.dart';
+import 'views/FourthPage.dart';
+import 'routers/routers.dart';
+import 'routers/application.dart';
+import 'model/provider.dart';
+import 'model/widget.dart';
+import 'widget/SearchInput.dart';
+import 'common/Style.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -22,9 +23,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-//    debugPaintSizeEnabled=true; // 渲染debug
+
     return new MaterialApp(
-      title: 'Demo01:',
+      title: 'title',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -34,7 +35,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void main() => runApp(new MyApp()) ;
+var db;
+WidgetModel widgetModel;
+void main() async{
+  final provider = new Provider();
+  await provider.init(true);
+  db = provider.db;
+  runApp(new MyApp());
+}
 
 
 class MyHomePage extends StatefulWidget {
@@ -83,59 +91,55 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     controller.dispose();
     super.dispose();
   }
+  Widget buildSearchInput(){
+    return new SearchInput((value) async{
+      if(value != ''){
+        widgetModel = new WidgetModel(db);
+        List<Map> list = await widgetModel.search(value);
+        print('list $list');
+        return list.map((item) => new MaterialSearchResult<String>(
+          value: item['name'],
+          text: item['name'] + '       ' + item['cnName'],
+        )).toList();
+      }else{
+        return null;
+      }
 
+    },(value){},(){});
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-//        resizeToAvoidBottomPadding: false,
-        appBar: new AppBar(
-          leading: null,
-          automaticallyImplyLeading: true,
-          title: isSearch ? new TextField(
-              onEditingComplete: () {
-                this.setState(() {
-                  isSearch = false;
-                });
-              },
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(10.0),
-                hintText: '请输入搜索词',
-                  isDense: true,
-              )
-          ) : new Text(appBarTitle),
-          actions: <Widget>[
-            new IconButton(
-              icon: new Icon(Icons.search),
-              tooltip: 'Repair it',
-              onPressed: () {
-                this.setState(() {
-                  isSearch = true;
-                });
-              }
-            ),
-          ],
-        ),
+
+      appBar: new AppBar(
+//          backgroundColor: new Color(AppColor.white),
+          title: buildSearchInput()
+      ),
       body: new TabBarView(
           controller: controller,
           children: <Widget>[
             new FirstPage(),
-            new SecondPage(),
+            new WidgetPage(db),
             new ThirdPage(data2ThirdPage: data2ThirdPage, callback: (val) => _onDataChange(val)),
             new FourthPage()
           ]
       ),
       bottomNavigationBar: new Material(
-        //color:Colors.orangeAccent,
         color: const Color(0xFFF0EEEF),   //底部导航栏主题颜色
         child: new Container(
             height:65.0,
-            //color:const Color(0xFFF0EEEF),
             child: new TabBar(
-              controller:controller,
-              indicatorColor: Colors.blue, //tab标签的下划线颜色
-              labelColor:const Color(0xFF000000),
-              tabs: this.myTabs
+
+            controller:controller,
+            indicatorColor: Colors.blue, //tab标签的下划线颜色
+            labelColor:const Color(0xFF000000),
+            tabs:<Tab>[
+              new Tab(text:'业界动态',icon: new Icon(Icons.language)),
+              new Tab(text:'组件',icon: new Icon(Icons.extension)),
+              new Tab(text:'官网地址',icon: new Icon(Icons.home)),
+              new Tab(text:'关于手册',icon: new Icon(Icons.favorite)),
+            ]
           )
         )
       )
