@@ -1,37 +1,60 @@
-
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'demos/home.dart';
+import '../../routers/application.dart';
+import 'home.dart';
 
-import '../common/eventBus.dart';
-import '../routers/application.dart';
-// 使用
-import 'todo.dart';
 
-@todo('seth', 'make this do something')
-void doSomething() {
-  print('do something');
-}
+class CategoryHome extends StatefulWidget {
+  CategoryHome(this.name);
+  final String name;
 
-class SecondPage extends StatefulWidget {
   @override
-  SecondPageState createState() => new SecondPageState();
+  _CategoryHome createState() => new _CategoryHome();
 }
 
-class SecondPageState extends State<SecondPage> {
+class _CategoryHome extends State<CategoryHome> {
+  String name;
 
-  TextEditingController controller;
-  String active =  'test';
-  String data = '无';
-
-  final List<DemoCategory> categories = DemoCategorys.toList();
-
-
-
+  @override
+  void initState() {
+    super.initState();
+    name = widget.name;
+  }
 
   @override
   Widget build(BuildContext context) {
-    print("categories: ${categories[0]}");
+    final title = widget.name;
+    DemoCategory category = getCatetoryByName(widget.name);
+
+    print("${widget.name} > ${getCatetoryByName(widget.name)} > $CategoryToDemos}");
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: new Container(
+            child: new CategoryList(CategoryToDemos[category])
+        )
+    );
+  }
+}
+
+class CategoryList extends StatefulWidget {
+  final demosPoints;
+  CategoryList(this.demosPoints);
+  _CategoryList createState() => new _CategoryList();
+
+}
+
+class _CategoryList extends State<CategoryList> {
+
+  List<DemosPoint> demoPoints;
+
+  initState() {
+    super.initState();
+    demoPoints = widget.demosPoints;
+  }
+
+  Widget build(BuildContext context) {
+    print("CT> ${demoPoints}");
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, //每行2个
@@ -39,21 +62,12 @@ class SecondPageState extends State<SecondPage> {
           crossAxisSpacing: 0.0, //纵轴(水平)方向间距
           childAspectRatio: 0.8 //纵轴缩放比例
       ),
-      itemCount: categories.length,
+      itemCount: this.demoPoints.length,
       itemBuilder: (BuildContext context, int index) {
-        return new ListItemWidget(
-          category: categories[index],
-        );
+        print(this.demoPoints);
+        return new ListItemWidget(this.demoPoints[index]);
       },
     );
-  }
-
-  void _onChanged(String value) {
-    doSomething();
-    setState(() {
-      active = value;
-      data = '90';
-    });
   }
 }
 
@@ -67,9 +81,9 @@ class ListItem {
 
 
 class ListItemWidget extends StatelessWidget {
-  final DemoCategory category;
+  final DemosPoint demosPoint;
 
-  ListItemWidget({this.category});
+  ListItemWidget(this.demosPoint);
 
   @override
   Widget build(BuildContext context) {
@@ -85,16 +99,16 @@ class ListItemWidget extends StatelessWidget {
             ),
             child: new RaisedButton(
                 onPressed: () {
-                  Application.router.navigateTo(context, "/category/${category.name}");
+                  Application.router.navigateTo(context, "${demosPoint.routerName}");
                 },
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Icon(
-                      category.icon,
+                      demosPoint.icon,
                     ),
-                    Text(category.name),
+                    Text(demosPoint.title),
                   ],
                 )
             )

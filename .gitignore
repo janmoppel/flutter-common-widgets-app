@@ -3,3 +3,5 @@ build/*
 .idea/*
 .packages
 .idea/
+.idea/workspace.xml
+.idea/flutter-common-widgets-app.iml

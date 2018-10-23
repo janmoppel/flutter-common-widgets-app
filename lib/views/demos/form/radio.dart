@@ -7,14 +7,23 @@ class RadioDemo extends StatelessWidget {
         appBar:  new AppBar(
           title: new Text('radio Demo'),
         ),
-        body: new Container(
-          child: new Radio(
-              key: Key('radio'),
-              value:'3',
-              groupValue: '3',
-              onChanged: (v) {
-                print('v > ${v}');
-              }
+        body: new Center(
+          child: new Container(
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                new Text("radio demo"),
+                new Radio(
+                    key: Key('radio'),
+                    value:'3',
+                    groupValue: '3',
+                    onChanged: (v) {
+                      print('v > ${v}');
+                    }
+                ),
+              ],
+            )
           ),
         )
     );

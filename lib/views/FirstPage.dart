@@ -19,7 +19,6 @@ class FirstPageState extends State<FirstPage> {
           new Container(
             child: new Pagination(),
           ),
-
           new Expanded(
             child: new List(),
           ),
