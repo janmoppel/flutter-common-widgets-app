@@ -76,6 +76,13 @@ List<DemosPoint> getDemosPoints() {
       routerName:  RadioDemo.routerName,
       buildRouter: (BuildContext context) => RadioDemo()
     ),
+    DemosPoint(
+      title: 'TextField',
+      icon: Icons.account_balance,
+      category: Form,
+      routerName: TextFieldDemo.routerName,
+      buildRouter: (BuildContext context) => TextFieldDemo(),
+    )
   ];
   return demosPoints;
 }

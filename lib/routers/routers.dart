@@ -13,8 +13,10 @@ class Routes {
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
           print("ROUTE WAS NOT FOUND !!!");
         });
-    router.define('/demo', handler: demoHandler);
+
+
     router.define('/category/:type', handler: categoryHandler);
+
     AllPoints.forEach((DemosPoint demo) {
       Handler handler = new Handler(
           handlerFunc: (BuildContext context, Map<String, List<String>> params) {
