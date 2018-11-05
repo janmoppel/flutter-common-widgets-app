@@ -1,11 +1,13 @@
 
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'demos/home.dart';
 
 import '../common/eventBus.dart';
 import '../routers/application.dart';
 import '../model/cat.dart';
+
 
 
 
@@ -28,11 +30,10 @@ class SecondPageState extends State<WidgetPage> {
 
   final List<DemoCategory> categories = DemoCategorys.toList();
 
-  List<Map> listData = [];
+  List<Cat> listData = [];
 
   void initState() {
     renderCats();
-
 //    eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
 //    );
   }
@@ -40,6 +41,7 @@ class SecondPageState extends State<WidgetPage> {
 
   void renderCats(){
     catModel.mainList().then((List data){
+      print("datadatadata> $data");
       if(data.isNotEmpty){
         setState(() {
           listData = data;

@@ -11,6 +11,7 @@
 
 * [flutter-widgets的官方库地址]( https://docs.flutter.kim/widgets/widgets-library.html )
 * [flutter-widgets的官方目录集]( http://doc.flutter-dev.cn/widgets/ )
+* [sqlitestudio 本地可视化工具] (https://sqlitestudio.pl/index.rvt)
 
 ### 分支命名及使用规范
 
@@ -67,7 +68,7 @@
 	- views 展示界面
 	- widget (与components概念重合,废弃)
 
-components 用来存放封闭的逻辑组件, 文件目录应为, 类比rax
+components 用来存放封装的逻辑组件, 文件目录应为, 类比rax
 
 - components
 	- hello-world
@@ -77,4 +78,3 @@ components 用来存放封闭的逻辑组件, 文件目录应为, 类比rax
 		- schema
 		- index.dart
 
-	
