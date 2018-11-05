@@ -11,6 +11,7 @@
 
 * [flutter-widgets的官方库地址]( https://docs.flutter.kim/widgets/widgets-library.html )
 * [flutter-widgets的官方目录集]( http://doc.flutter-dev.cn/widgets/ )
+* [sqlitestudio 本地可视化工具] (https://sqlitestudio.pl/index.rvt)
 
 ### commit 提交规范
 * $git cz
