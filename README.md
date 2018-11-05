@@ -12,6 +12,19 @@
 * [flutter-widgets的官方库地址]( https://docs.flutter.kim/widgets/widgets-library.html )
 * [flutter-widgets的官方目录集]( http://doc.flutter-dev.cn/widgets/ )
 
+### 分支命名及使用规范
+
+* 分支命名规范
+	- 自己开发分支命名统一为 username ，如：yifeng
+	- 分支两条主线为 Master分支和develop分支
+	- Master作为发布分支，develop作为开发测试分支、自己开发分支从dev checkout出去，发布即 merge to master
+
+* 分支合并规范
+	- 从最新的develop分支checkout出自己的开发分支
+	- 在自己开发开发分支开发完成后，先去develop分支pull最新代码，
+	- 将develop 分支最新代码 merge 到自己分支，确保无冲突
+	- 再切回develop分支merge自己开发分支代码，确保无冲突，且能正常运行
+
 ### commit 提交规范
 * $git cz
 
