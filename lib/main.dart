@@ -8,9 +8,9 @@ import 'views/ThirdPage.dart';
 import 'views/FourthPage.dart';
 import 'routers/routers.dart';
 import 'routers/application.dart';
-import 'model/provider.dart';
+import 'common/provider.dart';
 import 'model/widget.dart';
-import 'widget/SearchInput.dart';
+import 'package:flutter_rookie_book/components/SearchInput.dart';
 import 'common/Style.dart';
 
 
@@ -40,7 +40,7 @@ WidgetModel widgetModel;
 void main() async{
   final provider = new Provider();
   await provider.init(true);
-  db = provider.db;
+  db = Provider.db;
   runApp(new MyApp());
 }
 
