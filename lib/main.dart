@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/rendering.dart';
 
-import 'views//FirstPage.dart';
+import 'views/FirstPage.dart';
 import 'views/widgetPage.dart';
 import 'views/ThirdPage.dart';
 import 'views/FourthPage.dart';
