@@ -41,3 +41,27 @@
 * 代码编码规范
 	- 文件编码统一使用 UTF-8 编码；
 	- 前端编码采用首字母小写驼峰法. Widget Class 必须采用首字母大写驼峰法.
+
+### 文件目录结构(以LIb文件说明)
+
+- lib
+	- main.dart 入口文件
+	- common 公共的method
+	- components widget
+	- generated
+	- model 存放模型, 不应该加入逻辑层
+	- router 路由
+	- views 展示界面
+	- widget (与components概念重合,废弃)
+
+components 用来存放封闭的逻辑组件, 文件目录应为, 类比rax
+
+- components
+	- hello-world
+		- mods	  (可选, 子模块)
+		- mocks (可选)
+		- utils (可选, 存放暂时的私有method)
+		- schema
+		- index.dart
+
+	
