@@ -1,5 +1,6 @@
 import 'base.dart';
 import 'dart:async';
+import 'dart:convert';
 import '../common/sql.dart';
 
 abstract class CatInterface{
@@ -14,12 +15,15 @@ abstract class CatInterface{
     int get parentId;
 }
 
-class Cat {
+class Cat implements CatInterface {
   int id;
   String name;
   String desc;
   int depth;
   int parentId;
+
+  Cat();
+
   Cat.fromJSON(Map json)
       : id = json['x'],
         name = json['name'],
@@ -30,33 +34,51 @@ class Cat {
   String toString() {
     return '(cat $name)';
   }
+
+  Object toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'desc': desc,
+      'depth': depth,
+      'parentId': parentId
+    };
+  }
 }
 
 
-class CatModel{
+class CatControlModel{
   final String table = 'cat';
   Sql sql;
-  CatModel(db) {
+  CatControlModel() {
     sql = Sql.setTable(table);
   }
 
   /// 获取一级类目
   Future<List> mainList() async{
     List listJson =  await sql.getByCondition(conditions: {'parentId': 0});
-    List<Cat> Cats = listJson.map((json) {
+    List<Cat> cats = listJson.map((json) {
         return new Cat.fromJSON(json);
     }).toList();
-    return Cats;
+    return cats;
   }
 
-  Future<List> getList(int depth) async{
-    List a =  await sql.getByCondition(conditions: {'parentId': 0});
-    return a;
+  // 获取Cat不同深度与parent的列表
+  Future<List<Cat>> getList({int depth = 1, parentId = 0}) async{
+    List listJson =  await sql.getByCondition(conditions: {'parentId': parentId, 'depth': depth});
+    List<Cat> cats = listJson.map((json) {
+      return new Cat.fromJSON(json);
+    }).toList();
+    return cats;
   }
+//  // 增加cat, 个人使用
+//  Future addCard(Cat cat) async{
+//    Map newCat = await sql.insert(cat.toMap());
+//    return newCat;
+//  }
 }
 
 
 class CatDbModel {
   CatDbModel();
 }
-

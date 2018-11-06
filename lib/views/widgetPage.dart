@@ -13,15 +13,15 @@ import '../model/cat.dart';
 
 class WidgetPage extends StatefulWidget {
   final db;
-  CatModel catModel;
-  WidgetPage(this.db): catModel = new CatModel(db),super();
+  CatControlModel catModel;
+  WidgetPage(this.db): catModel = new CatControlModel(),super();
 
   @override
   SecondPageState createState() => new SecondPageState(catModel);
 }
 
 class SecondPageState extends State<WidgetPage> {
-  CatModel catModel;
+  CatControlModel catModel;
   SecondPageState(this.catModel): super();
 
   TextEditingController controller;
@@ -34,6 +34,9 @@ class SecondPageState extends State<WidgetPage> {
 
   void initState() {
     renderCats();
+    catModel.getList().then((value) {
+      print("value>>> ${value}");
+    });
 //    eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
 //    );
   }
