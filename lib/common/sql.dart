@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 
 
+
 class BaseModel{
   Database db;
   final String table = '';
@@ -26,6 +27,7 @@ class Sql extends BaseModel {
   String getTableName () {
     return tableName;
   }
+
   // condition: {}
   Future<List> getByCondition({Map<String, dynamic> conditions}) async {
     if (conditions == null ||conditions.isEmpty) {
@@ -37,6 +39,10 @@ class Sql extends BaseModel {
     });
 //    print("stringConditoins, ${stringConditoins}");
     return await this.query(tableName, where: stringConditions);
-
+  }
+  Future<Map<String, dynamic>> insert(Map<String, dynamic> json) async {
+    var id = await this.db.insert(tableName, json);
+    json['id'] = id;
+    return json;
   }
 }
