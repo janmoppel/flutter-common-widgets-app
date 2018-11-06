@@ -31,12 +31,12 @@ class Sql extends BaseModel {
     if (conditions == null ||conditions.isEmpty) {
       return this.get();
     }
-    String stringConditoins = '';
+    String stringConditions;
     conditions.forEach((key, value) {
-      stringConditoins = '$key = $value';
+      stringConditions = '$key = $value';
     });
-    print("stringConditoins, ${stringConditoins}");
-    return await this.query(tableName, where: stringConditoins);
+//    print("stringConditoins, ${stringConditoins}");
+    return await this.query(tableName, where: stringConditions);
 
   }
 }
