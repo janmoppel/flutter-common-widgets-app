@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import './widgets/axis/axis_list.dart';
+import './widgets/expanded/expanded_list.dart';
 class DemoComponent extends StatelessWidget {
   String name;
   DemoComponent(this.name);
@@ -7,15 +8,19 @@ class DemoComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget _body = Container();
+    switch(name){
+      case 'Axis':
+      _body = AxisList();
+      break;
+      case 'Expanded':
+      _body = ExpandedList();
+    }
     return new Scaffold(
       appBar:  new AppBar(
-        title: new Text('Component Demo'),
+        title: new Text('$name 列表'),
       ),
-      body: new Center(
-        child: new Text('param[name] from url: ${this.name}'),
-      ),
+      body: _body
     ) ;
   }
-
-
 }

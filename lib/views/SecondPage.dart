@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../components/Input.dart';
 import '../common/eventBus.dart';
 import '../routers/application.dart';
+import 'dart:core';
 // 使用
 import 'todo.dart';
 
@@ -23,7 +24,14 @@ class SecondPageState extends State<SecondPage> {
   TextEditingController controller;
   String active =  'test';
   String data = '无';
-  final List<ListItem> listData = [];
+  final List<ListItem> listData = [
+    // 临时添加
+    ListItem("Axis",Icons.format_align_center),
+    ListItem("Expanded",Icons.explicit),
+    ListItem("spacing",Icons.space_bar),
+    ListItem("Table",Icons.table_chart),
+  ];
+
 
 
   void initState() {
@@ -91,6 +99,7 @@ class ListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(listItem.title);
     return new Container(
         color: Colors.green,
         child: Container(
@@ -104,17 +113,17 @@ class ListItemWidget extends StatelessWidget {
             ),
             child: new RaisedButton(
                 onPressed: () {
-                  Application.router.navigateTo(context, "/demo?name=test${this.index}");
+                  Application.router.navigateTo(context, "/demo?name=${Uri.encodeComponent(listItem.title)}");
                 },
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Icon(
-                      Icons.star,
+                      listItem.iconData,
                       color: Colors.red[500],
                     ),
-                    Text('测试'),
+                    Text(listItem.title),
                   ],
                 )
             )
