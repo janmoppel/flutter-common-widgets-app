@@ -7,16 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cebe5391-9073-474c-b5a2-470a3cd14ae1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/widgets/404.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routers/router_handler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/router_handler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routers/routers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routers/routers.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/category.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/elements/Form/Button/FlatButton/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/elements/Form/Button/FlatButton/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/elements/Form/Button/RaisedButton/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/elements/Form/Button/RaisedButton/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/RichText/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/RichText/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/elements/Form/Text/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,19 +23,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Button/RaisedButton/index.dart">
+        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="43" />
+            <state relative-caret-position="285">
+              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="category.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/views/category.dart">
+      <file leaf-file-name=".flutter-plugins" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.flutter-plugins">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4722" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/main.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1240">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -48,39 +64,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Button/FlatButton/index.dart">
+      <file leaf-file-name="flutter-common-widgets-app.iml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/flutter-common-widgets-app.iml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="6" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="16" selection-end-column="6" />
+              <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Text/index.dart">
+      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
-            </state>
+            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Text/RichText/index.dart">
+      <file leaf-file-name="flutter_rookie_book_android.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flutter_rookie_book_android.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-            </state>
+            <state />
           </provider>
         </entry>
       </file>
@@ -149,7 +152,6 @@
         <option value="$PROJECT_DIR$/lib/components/Pagination2.dart" />
         <option value="$PROJECT_DIR$/lib/views/demos/addCard.dart" />
         <option value="$PROJECT_DIR$/lib/views/demos/form/radio/radio1.dart" />
-        <option value="$PROJECT_DIR$/lib/main.dart" />
         <option value="$PROJECT_DIR$/lib/views/demos/home.dart" />
         <option value="$PROJECT_DIR$/lib/views/demos/category.dart" />
         <option value="$PROJECT_DIR$/test/imp2.dart" />
@@ -190,10 +192,11 @@
         <option value="$PROJECT_DIR$/lib/widgets/elements/Form/Button/FlatButton/index.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/elements/Form/Text/RichText/index.dart" />
         <option value="$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart" />
+        <option value="$PROJECT_DIR$/lib/main.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -223,122 +226,12 @@
             <path>
               <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="routers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Button" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Button" type="462c0819:PsiDirectoryNode" />
-              <item name="FlatButton" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Button" type="462c0819:PsiDirectoryNode" />
-              <item name="RaisedButton" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="CheckBox" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Text" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Text" type="462c0819:PsiDirectoryNode" />
-              <item name="RichText" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter-common-widgets-app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="widgets" type="462c0819:PsiDirectoryNode" />
-              <item name="elements" type="462c0819:PsiDirectoryNode" />
-              <item name="Form" type="462c0819:PsiDirectoryNode" />
-              <item name="Text" type="462c0819:PsiDirectoryNode" />
-              <item name="Text" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter-common-widgets-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -352,7 +245,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -481,7 +374,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
@@ -571,19 +464,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/button/button.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/Input/basic.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/Input/textFielsdart.dart" />
-    <entry file="file://$PROJECT_DIR$/test/imp2.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/Bix/box1.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/Bix/box2.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/views/demos/Bix/index.dart" />
     <entry file="file://$PROJECT_DIR$/lib/views/demos/Bix/fittedBox/button.dart" />
     <entry file="file://$PROJECT_DIR$/lib/views/demos/Bix/fittedBox/index.dart" />
     <entry file="file://$PROJECT_DIR$/lib/views/demos/Button/TextField.dart" />
@@ -688,11 +568,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/views/ThirdPage.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/_home.dart" />
@@ -717,9 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="69" column="2" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,8 +725,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/widgets/elements/Form/Text/Text/index.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="285">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flutter_rookie_book_android.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.flutter-plugins">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4722" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1240">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/flutter-common-widgets-app.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
         </state>
       </provider>
     </entry>
