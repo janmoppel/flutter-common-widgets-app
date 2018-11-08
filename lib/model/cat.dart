@@ -22,20 +22,20 @@ class Cat implements CatInterface {
   int depth;
   int parentId;
 
-  Cat();
+  Cat({this.id, this.name, this.desc, this.depth, this.parentId});
 
   Cat.fromJSON(Map json)
-      : id = json['x'],
+      : id = json['id'],
         name = json['name'],
         desc = json['desc'],
         depth = json['depth'],
         parentId = json['parentId'];
 
   String toString() {
-    return '(cat $name)';
+    return '(Cat $name)';
   }
 
-  Object toMap() {
+  Map toMap() {
     return {
       'id': id,
       'name': name,
@@ -43,6 +43,23 @@ class Cat implements CatInterface {
       'depth': depth,
       'parentId': parentId
     };
+  }
+  Map toSqlCondition() {
+    Map _map = this.toMap();
+    Map condition = {};
+    _map.forEach((k, value) {
+
+      if (value != null) {
+
+        condition[k] = value;
+      }
+    });
+
+    if (condition.isEmpty) {
+      return {};
+    }
+
+    return condition;
   }
 }
 
@@ -64,21 +81,28 @@ class CatControlModel{
   }
 
   // 获取Cat不同深度与parent的列表
-  Future<List<Cat>> getList({int depth = 1, parentId = 0}) async{
-    List listJson =  await sql.getByCondition(conditions: {'parentId': parentId, 'depth': depth});
+  Future<List<Cat>> getList([Cat cat]) async{
+
+
+    if (cat == null) {
+      cat = new Cat(depth: 1, parentId: 0);
+    }
+    print("cat in getList ${cat.toMap()}");
+
+    List listJson =  await sql.getByCondition(conditions: cat.toSqlCondition());
     List<Cat> cats = listJson.map((json) {
       return new Cat.fromJSON(json);
     }).toList();
     return cats;
   }
-//  // 增加cat, 个人使用
-//  Future addCard(Cat cat) async{
-//    Map newCat = await sql.insert(cat.toMap());
-//    return newCat;
-//  }
-}
 
+  // 通过name获取Cat对象信息
+  Future<Cat> getCatByName(String name) async {
+    List json = await sql.getByCondition(conditions: {'name': name});
+    if (json.isEmpty) {
+      return null;
+    }
+    return new Cat.fromJSON(json.first);
+  }
 
-class CatDbModel {
-  CatDbModel();
 }

@@ -1,19 +1,18 @@
 
-import 'dart:math' as math;
+
 
 import 'package:flutter/material.dart';
-import 'demos/home.dart';
-
-import '../common/eventBus.dart';
 import '../routers/application.dart';
 import '../model/cat.dart';
+import '../widgets/index.dart';
+
 
 
 
 
 class WidgetPage extends StatefulWidget {
   final db;
-  CatControlModel catModel;
+  final CatControlModel catModel;
   WidgetPage(this.db): catModel = new CatControlModel(),super();
 
   @override
@@ -28,26 +27,19 @@ class SecondPageState extends State<WidgetPage> {
   String active =  'test';
   String data = '无';
 
-  final List<DemoCategory> categories = DemoCategorys.toList();
+  List<Cat> categories = [];
 
-  List<Cat> listData = [];
 
   void initState() {
     renderCats();
-    catModel.getList().then((value) {
-      print("value>>> ${value}");
-    });
-//    eventBus.on<MyEvent>().listen((MyEvent data) => // 绑定事件
-//    );
   }
 
 
   void renderCats(){
-    catModel.mainList().then((List data){
-      print("datadatadata> $data");
+    catModel.getList().then((List data){
       if(data.isNotEmpty){
         setState(() {
-          listData = data;
+          categories = data;
         });
       }
     });
@@ -56,7 +48,10 @@ class SecondPageState extends State<WidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("categories: ${categories[0]}");
+    if (categories.length == 0) {
+      return new Container();
+    }
+    print("categories in widgetPage : ${categories[0]}");
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, //每行2个
@@ -84,7 +79,7 @@ class SecondPageState extends State<WidgetPage> {
 
 class ListItemWidget extends StatelessWidget {
 
-  final DemoCategory category;
+  final Cat category;
 
   ListItemWidget({this.category});
 
@@ -103,13 +98,14 @@ class ListItemWidget extends StatelessWidget {
             child: new RaisedButton(
                 onPressed: () {
                   Application.router.navigateTo(context, "/category/${category.name}");
+//                  Application.router.navigateTo(context, "/category/${category.name}");
                 },
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Icon(
-                      category.icon,
+                      Icons.add,
                     ),
                     Text(category.name),
                   ],

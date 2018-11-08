@@ -7,9 +7,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 class Provider {
   static Database db;
-  Future connectDb() {
 
-  }
   //初始化数据库
   // isCreate 用永远 copy 一个新的数据库
   Future init(bool isCreate) async {

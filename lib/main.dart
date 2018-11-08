@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 var db;
-WidgetModel widgetModel;
+//WidgetModel widgetModel;
 void main() async{
   final provider = new Provider();
   await provider.init(true);
@@ -93,17 +93,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
   Widget buildSearchInput(){
     return new SearchInput((value) async{
-      if(value != ''){
-        widgetModel = new WidgetModel(db);
-        List<Map> list = await widgetModel.search(value);
-        print('list $list');
-        return list.map((item) => new MaterialSearchResult<String>(
-          value: item['name'],
-          text: item['name'] + '       ' + item['cnName'],
-        )).toList();
-      }else{
-        return null;
-      }
+      return null;
+//      if(value != ''){
+//        widgetModel = new WidgetModel(db);
+//        List<Map> list = await widgetModel.search(value);
+//        print('list $list');
+//        return list.map((item) => new MaterialSearchResult<String>(
+//          value: item['name'],
+//          text: item['name'] + '       ' + item['cnName'],
+//        )).toList();
+//      }else{
+//        return null;
+//      }
 
     },(value){},(){});
   }

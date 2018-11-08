@@ -29,15 +29,33 @@ class Sql extends BaseModel {
   }
 
   // condition: {}
-  Future<List> getByCondition({Map<String, dynamic> conditions}) async {
-    if (conditions == null ||conditions.isEmpty) {
+  Future<List> getByCondition({Map<dynamic, dynamic> conditions}) async {
+    if (conditions == null || conditions.isEmpty) {
       return this.get();
     }
-    String stringConditions;
+    String stringConditions = '';
+
+    int index = 0;
+    print("condition>>> $conditions");
     conditions.forEach((key, value) {
-      stringConditions = '$key = $value';
+      if (value == null) {
+        return ;
+      }
+      print("$key value.runtimeType: ${value.runtimeType}");
+      if (value.runtimeType == String) {
+        stringConditions = '$stringConditions $key = "$value"';
+      }
+      if (value.runtimeType == int) {
+        stringConditions = '$stringConditions $key = $value';
+      }
+
+      if (index >= 0 && index < conditions.length -1) {
+        stringConditions = '$stringConditions and';
+      }
+      index++;
     });
-//    print("stringConditoins, ${stringConditoins}");
+    print("this is string condition for sql > $stringConditions");
+
     return await this.query(tableName, where: stringConditions);
   }
   Future<Map<String, dynamic>> insert(Map<String, dynamic> json) async {
