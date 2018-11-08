@@ -81,25 +81,26 @@ class _CategoryHome extends State<CategoryHome> {
   }
   void onWidgetTap(WidgetPoint widgetPoint) {
     String targetName = widgetPoint.name;
-    String targetRouter;
+    String targetRouter = '/category/error/404';
     widgetDemosList.forEach((item) {
       if (item.name == targetName) {
         targetRouter = item.routerName;
       }
     });
+    print("router> ${targetRouter}");
     Application.router.navigateTo(context, "${targetRouter}");
   }
 
   @override
   Widget build(BuildContext context) {
-    CatControlModel catControl = new CatControlModel();
+
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
         ),
         body: WillPopScope(
           onWillPop: () {
-//            return back();
+            return back();
         },
         child: new Container(
             child: new CategoryOrWidgetList(

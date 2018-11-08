@@ -7,7 +7,7 @@ import 'Text/index.dart' as Text;
 
 List<WidgetPoint> widgetPoints = [
   WidgetPoint(
-    name: 'FlatButton',
+    name: 'RichText',
     routerName: RichText.Demo.routeName,
     buildRouter: (BuildContext context) => RichText.Demo(),
   ),

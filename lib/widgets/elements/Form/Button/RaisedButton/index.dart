@@ -8,8 +8,14 @@ class Demo extends StatefulWidget {
 class _Demo extends State<Demo> {
 
   Widget build(BuildContext context) {
-    return Container(
-        child: RaisedButton(onPressed: () {}, child: Text("BUtton"))
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("FlatButton"),
+        ),
+        body: Container(
+            child: RaisedButton(onPressed: () {}, child: Text("BUtton"))
+        )
     );
+
   }
 }

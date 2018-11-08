@@ -17,13 +17,14 @@ class Routes {
 
 
     router.define('/category/:type', handler: categoryHandler);
-
+    router.define('/category/error/404', handler: widgetNotFoundHandler);
     widgetDemosList.forEach((demo) {
       Handler handler = new Handler(
           handlerFunc: (BuildContext context, Map<String, List<String>> params) {
             return demo.buildRouter(context);
       });
-      router.define(demo.routerName, handler: handler);
+      router.define('${demo.routerName}', handler: handler);
     });
+
   }
 }

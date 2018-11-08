@@ -8,8 +8,13 @@ class Demo extends StatefulWidget {
 class _Demo extends State<Demo> {
 
   Widget build(BuildContext context) {
-    return Container(
-        child: Text("text")
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("FlatButton"),
+        ),
+        body: Container(
+            child: Text("this is Text")
+        )
     );
   }
 }
