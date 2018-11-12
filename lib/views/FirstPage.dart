@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../components/List.dart';
-import '../components/Pagination.dart';
+import 'package:flutter_rookie_book/components/List.dart';
+import 'package:flutter_rookie_book/components/Pagination.dart';
 
+import '../common/sql.dart';
+import 'dart:async';
 
 class FirstPage extends StatefulWidget {
   @override
@@ -13,30 +15,22 @@ class FirstPage extends StatefulWidget {
 class FirstPageState extends State<FirstPage> {
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return new Scaffold( // scaffold是一个脚手架，可以就理解为一个html，appBar就是上面的那个titlebar，body
-      appBar: new AppBar(
-        backgroundColor: const Color(0xFFF0EEEF),
-        title: new Text('业界动态',style: TextStyle(color: Colors.black))
-      ),
-//      body: new Container(
-//        //child: new List(),
-//        child: new Pagination(),
-//      )
+    return new Column(
+        children: <Widget>[
+          new Container(
+            child: new Pagination(),
+          ),
+          new Expanded(
+            child: new List(),
+          ),
+        ]
 
-      body: new Center(
-        child: new Column(
-            children: <Widget>[
-              new Container(
-                child: new Pagination(),
-              ),
-              new Expanded(
-                child: new List(),
-              ),
-
-          ]
-        )
-      ),
     );
   }
 }

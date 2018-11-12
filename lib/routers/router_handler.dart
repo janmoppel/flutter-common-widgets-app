@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import '../views/category.dart';
+import '../widgets/404.dart';
 
-import '../views/demos/demo1.dart' as Demo;
-import '../views/demos/widget_example.dart';
-
-var demoHandler = new Handler(
+var categoryHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  String name = params["name"]?.first;
+      print("params $params");
+      String name = params["type"]?.first;
+      print("type::: $name");
 
-  return new Demo.DemoComponent(name);
-});
-
-var exampleHandler = new Handler(
-    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-  String name = params["name"]?.first;
-  String docUrl = params["docUrl"]?.first;
-
-  return new WidgetExample(
-    docUrl: docUrl,
-    name: name,
+      return new CategoryHome(name);
+    },
   );
-});
+
+var widgetNotFoundHandler = new Handler(
+  handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    return new WidgetNotFound();
+  }
+);

@@ -4,6 +4,5 @@ EventBus eventBus = new EventBus();
 
 class MyEvent {
   String text;
-
   MyEvent(this.text);
 }
