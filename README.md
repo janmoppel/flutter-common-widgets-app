@@ -68,16 +68,6 @@
 	- views 展示界面
 	- widget (与components概念重合,废弃)
 
-components 用来存放封装的逻辑组件, 文件目录应为, 类比rax
-
-- components
-	- hello-world
-		- mods	  (可选, 子模块)
-		- mocks (可选)
-		- utils (可选, 存放暂时的私有method)
-		- schema
-		- index.dart
-
 ``` javascript
 ├── main.dart //入口文件
 ├── common 公共的method
@@ -120,39 +110,51 @@ components 用来存放封装的逻辑组件, 文件目录应为, 类比rax
 ```
 
 ``` javascript
-├── 404.dart
-├── index.dart // flutter的 widgets 的总入口文件
-├── components // 是对flutter组件的分类 (区别于上面的components)
-│   └── index.dart
-├── elements // 对flutter基础元素的分类
-│   ├── index.dart // flutter的 elements 类型入口文件
-│   ├── Form //flutter的 From 类型集合
-│   │   ├── Button //flutter的 button 元素，里面是 文件夹代表类名/index.dart
-│   │   │   ├── FlatButton
-│   │   │   │   └── index.dart
-│   │   │   ├── RaisedButton
-│   │   │   │   └── index.dart
-│   │   │   └── index.dart
-│   │   ├── CheckBox
-│   │   ├── Input
-│   │   ├── Radio
-│   │   ├── Slider
-│   │   ├── Switch
-│   │   ├── Text
-│   │   └── index.dart
-│   ├── Frame // flutter的 Frame 类型集合
-│   │   ├── Align
-│   │   ├── Axis
-│   │   ├── Box
-│   │   ├── Expanded
-│   │   ├── Layout
-│   │   ├── Stack
-│   │   ├── Table
-│   │   └── spacing
-│   └── Media // flutter的 Media 类型集合
-│       ├── Canvas
-│       ├── Icon
-│       └── Image
-└── themes
-    └── index.dart
+└── widgets // 对flutter所有元素和组件的分类
+    ├── 404.dart
+    ├── index.dart // widgets 的总入口文件
+    ├── components // 组件的分类 (区别于上面的components)
+    │   └── index.dart
+    ├── elements // 基础元素的分类
+    │   ├── index.dart // elements下的 elements 类型入口文件
+    │   ├── Form // elements下的 From 类型集合
+    │   │   ├── Button // button 元素，里面是 文件夹代表类名/index.dart
+    │   │   │   ├── FlatButton
+    │   │   │   │   └── index.dart
+    │   │   │   ├── RaisedButton
+    │   │   │   │   └── index.dart
+    │   │   │   └── index.dart
+    │   │   ├── CheckBox
+    │   │   ├── Input
+    │   │   ├── Radio
+    │   │   ├── Slider
+    │   │   ├── Switch
+    │   │   ├── Text
+    │   │   └── index.dart
+    │   ├── Frame // elements下的 Frame 类型集合
+    │   │   ├── Align
+    │   │   ├── Axis
+    │   │   ├── Box
+    │   │   ├── Expanded
+    │   │   ├── Layout
+    │   │   ├── Stack
+    │   │   ├── Table
+    │   │   └── spacing
+    │   └── Media // elements下的 Media 类型集合
+    │       ├── Canvas
+    │       ├── Icon
+    │       └── Image
+    └── themes
+        └── index.dart
+```
+
+```javascript
+widget 里的文件结构，用来存放封装的逻辑组件, 文件目录应为, 类比rax
+- widget // widget 下详细元素或组件的目录结构
+	- hello-world // 例如
+		- mods	  // (可选, 子模块)
+		- mocks // (可选)
+		- utils // (可选, 存放暂时的私有method)
+		- schema
+		- index.dart
 ```
