@@ -7,3 +7,4 @@ build/*
 flutter_rookie_book.iml
 flutter_rookie_book_android.iml
 ios/*
+pubspec.lock
