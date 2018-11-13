@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_rookie_book/views/demos/layout/layout_type.dart';
 import "all.dart";
 class DemoCategory {
   const DemoCategory({ this.name, this.icon });
@@ -31,6 +32,10 @@ const DemoCategory Form = DemoCategory(
 
 const DemoCategory Basic = DemoCategory(
     name: 'Basic',
+    icon: Icons.add
+);
+const DemoCategory Layout = DemoCategory(
+    name: 'Layout',
     icon: Icons.add
 );
 
@@ -82,6 +87,13 @@ List<DemosPoint> getDemosPoints() {
       category: Form,
       routerName: TextFieldDemo.routerName,
       buildRouter: (BuildContext context) => TextFieldDemo(),
+    ),
+    DemosPoint(
+      title: 'layout',
+      icon: Icons.apps,
+      category:Layout,
+      routerName: layoutCreate.routeName,
+      buildRouter: (BuildContext context) => layoutCreate(),
     )
   ];
   return demosPoints;
