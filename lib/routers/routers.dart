@@ -7,6 +7,7 @@ import './router_handler.dart';
 
 class Routes {
   static String root = "/";
+  static String widgetDemo = '/widget-demo';
 
   static void configureRoutes(Router router) {
     List widgetDemosList = new WidgetDemoList().getDemos();
