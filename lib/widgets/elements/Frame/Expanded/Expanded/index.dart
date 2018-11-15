@@ -11,6 +11,8 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Expanded',
+      desc: '用于撑开Row、Column或者Flex子widget,使用Expanded 可以使 Row、Column或者Flex的子项能够填充主轴的全部可用空间。如果存在多个子项，则根据 flex 属性来划分可用空间。 Expanded widget 必须是Row,Column或者Flex的后代，并且从Expanded widget到其封闭的Row、Column或Flex的路径必须仅包含StatelessWidget或StateFulWidget。',
+      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/Expanded/Expanded/index.dart',
       child: Column(
         children: <Widget>[
           Text('Expanded'),

@@ -5,15 +5,23 @@ class WidgetDemo extends StatelessWidget {
   final Widget child;
   final String docUrl;
   final String title;
+  final String desc;
+  final String codeUrl;
 
-  WidgetDemo({Key key, @required this.title, @required this.child, @required this.docUrl}) : super(key: key);
+  WidgetDemo(
+      {Key key,
+      @required this.title,
+      @required this.child,
+      @required this.desc,
+      @required this.codeUrl,
+      @required this.docUrl})
+      : super(key: key);
 
-
-  _launchURL() async {
-    if (await canLaunch(docUrl)) {
-      await launch(docUrl);
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
-      throw 'Could not launch $docUrl';
+      throw 'Could not launch $url';
     }
   }
 
@@ -23,16 +31,34 @@ class WidgetDemo extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
         actions: <Widget>[
-          new FlatButton(
-            onPressed: _launchURL,
-            child: new Icon(
-              Icons.attachment,
-              color: Colors.white,
-            ),
+          new IconButton(
+            tooltip: 'widget doc',
+            onPressed: (){
+              _launchURL(docUrl);
+            },
+            icon: Icon(Icons.library_books),
+          ),
+          new IconButton(
+            tooltip: 'github code',
+            onPressed: (){
+              _launchURL(codeUrl);
+            },
+            icon: Icon(Icons.code),
           ),
         ],
       ),
-      body: child,
+      body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+        child: Column(
+          children: <Widget>[
+            Text(desc, style: TextStyle(fontSize: 15.5, height: 1.2)),
+            SizedBox(
+              height: 20.0,
+            ),
+            child,
+          ],
+        ),
+      ),
     );
   }
 }
