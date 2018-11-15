@@ -10,8 +10,19 @@
 
 import 'package:flutter/material.dart';
 
-const String _flatText = 'material 的 “flat button”。'
-'flat button 是显示在（zero elevation）材质 小部件上的文本标签，通过填充颜色对触摸作出反应。';
+const String _flatTitle =
+'简介:\nFlatButton 属于扁平 button 部件\n';
+
+const String _flatText1 =
+'1.参数的默认的按钮和禁用按钮\n';
+
+const String _flatText2 =
+'2.按钮图标和标签的小部件创建文本按钮。\n';
+
+const String _flatText3 =
+'3.更改项参数的自定义,比如:边框，点击效果，内容文字颜色等。\n';
+
+
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Form/Button/FlatButton';
@@ -27,35 +38,39 @@ class _Demo extends State<Demo> {
           title: Text("FlatButton"),
         ),
         // Align,Column 控制居中
-        body: Align(
-            alignment: const Alignment(0.0, 0.0),
-            child: Column(
-                mainAxisSize: MainAxisSize.max,
+        body: Container(
+            padding: new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 30.0, right: 30.0),
+              child: Column(
+                //mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  new Container(
-                    padding: new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 30.0, right: 30.0),
-                    child: new Text(_flatText,
-                        style: new TextStyle(
-                          fontSize: 20.0,
-                    )),
-                  ),
+                  textAlignBar(new Text(_flatTitle, style: new TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign:TextAlign.left)),
+                  textAlignBar(new Text(_flatText1, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
                   ButtonBar(
-                    alignment:MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
+                    alignment:MainAxisAlignment.spaceAround,
+                    mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
                       FlatButtonDefault(context),
                       SizedBox(width: 20.0),// 间距
-                      FlatButtonCustom(context)
+                      FlatButtonDefault(context,false),
                     ],
                   ),
+                  textAlignBar(new Text(_flatText2, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
                   ButtonBar(
-                    mainAxisSize: MainAxisSize.min,
+                    alignment:MainAxisAlignment.spaceAround,
+                    //mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      FlatButtonDefault(context),
-                      FlatButtonCustom(context)
+                      FlatButtonIconDefault(context),
+                      FlatButtonIconDefault(context,false),
                     ],
                   ),
-                ])));
+                  textAlignBar(new Text(_flatText3, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
+                  FlatButtonCustom(context),
+                  FlatButtonCustom(context),
+                  FlatButtonCustom(context),
+                  FlatButtonCustom(context),
+                ])
+        )
+    );
   }
 }
 
@@ -83,20 +98,49 @@ void _showMessage(String name, BuildContext context) {
 }
 
 /*
-* FlatButton 默认按钮的实例
+* 带align的text
 * */
-Widget FlatButtonDefault(BuildContext context) {
-  return FlatButton(
-      // 文本内容
-      child: const Text('默认按钮', semanticsLabel: 'FLAT BUTTON 2'),
-      // 按钮颜色
-      // color: Colors.blueGrey,
-      // FlatButton 的点击事件,这个事件必须带上,否则背景色为透明
-      onPressed: () {
-        //_showMessage('点击了 FLAT BUTTON ', context);
-      }
+Widget textAlignBar(Text text){
+  return new Align(
+    alignment: FractionalOffset.centerLeft,
+    child: Column(
+      children: <Widget>[
+        SizedBox(height: 20.0),
+        text
+      ])
   );
 }
+
+/*
+* FlatButton 默认按钮的实例
+* isDisabled:是否是禁用
+* */
+Widget FlatButtonDefault(BuildContext context, [bool isDisabled = true]) {
+  return FlatButton(
+      // 文本内容
+      child: const Text('默认按钮', semanticsLabel: 'FLAT BUTTON 1'),
+      onPressed: isDisabled ? () {
+        //_showMessage('点击了 FLAT BUTTON ', context);
+      } : null
+  );
+}
+
+/*
+* FlatButton.icon 默认按钮的实例
+* Create a text button from a pair of widgets that serve as the button's icon and label
+* isDisabled:是否是禁用
+* */
+Widget FlatButtonIconDefault(BuildContext context, [bool isDisabled = true]) {
+  return FlatButton.icon(
+    // 文本内容
+      icon: const Icon(Icons.add_circle, size: 18.0),
+      label: const Text('默认按钮', semanticsLabel: 'FLAT BUTTON 2'),
+      onPressed: isDisabled ? () {
+        //_showMessage('点击了 FLAT BUTTON ', context);
+      } : null
+  );
+}
+
 /*
 * FlatButton 自定义的实例
 * */
