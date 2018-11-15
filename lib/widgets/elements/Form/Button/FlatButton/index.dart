@@ -7,71 +7,83 @@
  * target: FlatButton 的示例
  * 对应文档地址:https://docs.flutter.io/flutter/material/FlatButton-class.html
  */
+import '../../../../../common/widget-demo.dart';
 
 import 'package:flutter/material.dart';
 
 const String _flatTitle =
-'简介:\nFlatButton 属于扁平 button 部件\n';
+'一个 material design "flat button"\n'
+'flat button 是显示在（零高程）material 小部件上的文本标签，通过填充颜色对触摸作出反应'
+'在工具栏上，在对话框中使用平面按钮，或与其他内容内联，但使用填充从该内容偏移，以便按钮的存在是显而易见的。Flat buttons 故意不具有可见边框，因此必须依赖于它们相对于其他内容的位置以用于上下文。在对话框和卡片中，它们应该组合在一个底角中。避免使用平面按钮，它们会与其他内容混合，例如在列表中间。\n';
 
 const String _flatText1 =
-'1.参数的默认的按钮和禁用按钮\n';
+'1.参数的默认的按钮和禁用按钮\n'
+'如果onPressed回调为null，则该按钮将被禁用，不会对触摸做出反应，并且将按 disabledColor 属性而不是color属性指定的颜色进行着色。如果您尝试更改按钮的颜色并且没有任何效果，请检查您是否正在传递非null onPressed处理程序。\n';
+
 
 const String _flatText2 =
 '2.按钮图标和标签的小部件创建文本按钮。\n';
 
 const String _flatText3 =
-'3.更改项参数的自定义,比如:边框，点击效果，内容文字颜色等。\n';
-
-
+'3.更改项参数的自定义,比如:边框，点击效果，内容文字颜色等。\n'
+'Material design flat buttons 按钮具有全帽标签，一些内部填充和一些定义的尺寸。要使应用程序的一部分具有交互式，使用墨水溅，而不是承诺这些样式选择，请考虑使用InkWell。\n'
+'flat button 的最小尺寸为88.0×36.0，可以用 ButtonTheme 覆盖。该clipBehavior参数不能为空。\n';
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Form/Button/FlatButton';
 
   @override
-  _Demo createState() => _Demo();
+  _DemoState createState() => _DemoState();
 }
 
-class _Demo extends State<Demo> {
+class _DemoState extends State<Demo> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("FlatButton"),
-        ),
-        // Align,Column 控制居中
-        body: Container(
-            padding: new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 30.0, right: 30.0),
-              child: Column(
-                //mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  textAlignBar(new Text(_flatTitle, style: new TextStyle(fontSize: 20.0,fontWeight: FontWeight.bold),textAlign:TextAlign.left)),
-                  textAlignBar(new Text(_flatText1, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
-                  ButtonBar(
-                    alignment:MainAxisAlignment.spaceAround,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      FlatButtonDefault(context),
-                      SizedBox(width: 20.0),// 间距
-                      FlatButtonDefault(context,false),
-                    ],
-                  ),
-                  textAlignBar(new Text(_flatText2, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
-                  ButtonBar(
-                    alignment:MainAxisAlignment.spaceAround,
-                    //mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      FlatButtonIconDefault(context),
-                      FlatButtonIconDefault(context,false),
-                    ],
-                  ),
-                  textAlignBar(new Text(_flatText3, style: new TextStyle(fontSize: 18.0,color:Colors.blue),textAlign:TextAlign.left)),
-                  FlatButtonCustom(context),
-                  FlatButtonCustom(context),
-                  FlatButtonCustom(context),
-                  FlatButtonCustom(context),
-                ])
-        )
+    return WidgetDemo(
+      title: 'FlatButton',
+      desc: _flatTitle,
+      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Form/Button/FlatButton/index.dart',
+      child: allFlatButtons(context),
+      docUrl: 'https://docs.flutter.io/flutter/material/FlatButton-class.html',
     );
   }
+}
+
+/**
+ * 所有的 FlatButton 按钮
+ */
+Widget allFlatButtons(BuildContext context){
+  return Container(
+      //padding: new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 0, right: 0),
+      child: Column(
+          //mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            textAlignBar(_flatText1),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                FlatButtonDefault(context),
+                SizedBox(width: 20.0), // 间距
+                FlatButtonDefault(context, false),
+              ],
+            ),
+            textAlignBar(_flatText2),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceAround,
+              //mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                FlatButtonIconDefault(context),
+                FlatButtonIconDefault(context, false),
+              ],
+            ),
+            textAlignBar(_flatText3),
+            FlatButtonCustom(context),
+            FlatButtonCustom(context),
+            FlatButtonCustom(context),
+            FlatButtonCustom(context),
+          ])
+  );
 }
 
 /*
@@ -100,13 +112,14 @@ void _showMessage(String name, BuildContext context) {
 /*
 * 带align的text
 * */
-Widget textAlignBar(Text text){
+Widget textAlignBar(String txt){
+  //style: new TextStyle(fontSize: 15.5, height: 1.2),textAlign:TextAlign.left
   return new Align(
     alignment: FractionalOffset.centerLeft,
     child: Column(
       children: <Widget>[
         SizedBox(height: 20.0),
-        text
+        new Text(txt, style: new TextStyle(fontSize: 15.5,height: 1.2,color:Colors.blue),textAlign:TextAlign.left)
       ])
   );
 }
@@ -194,4 +207,8 @@ Widget FlatButtonCustom(BuildContext context) {
         print(isClick);
       }
   );
+}
+
+Widget FlatButtonCustom2 extends FlatButtonCustom(){
+
 }

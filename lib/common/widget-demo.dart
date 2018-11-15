@@ -49,16 +49,21 @@ class WidgetDemo extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-        child: Column(
-          children: <Widget>[
-            Text(desc, style: TextStyle(fontSize: 15.5, height: 1.2)),
-            SizedBox(
-              height: 20.0,
-            ),
-            child,
-          ],
-        ),
-      ),
-    );
+        child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(0.0),
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(desc, style: TextStyle(fontSize: 15.5, height: 1.2)),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  child,
+                ],
+              ),
+            ])
+        )
+      );
   }
 }
