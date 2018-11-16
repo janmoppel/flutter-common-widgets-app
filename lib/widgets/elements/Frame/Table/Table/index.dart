@@ -7,10 +7,20 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
+  String _desc = """
+一个为它子组件使用表格布局的widget 
+如果你的子组件是有一行，其实使用 Row 更合适一些，如果你的子组件只有一列，或许你可以是用 SliverList 或者Column widget.
+表格中行的大小是根据列行数和宽度计算的来，控制列宽可以使用 columnWidth 属性，注意，Table中每一行的列数需要一定
+
+更多关于Table的布局可以使用 RenderTable widget，关于控制字组件的对齐方式可以使用 TableCell
+""";
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
-      title: 'Padding',
+      title: 'Table',
+      desc: _desc,
+      codeUrl:
+          'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/Table/Table/index.dart',
       child: Table(
         columnWidths: const {
           0: FixedColumnWidth(50.0),
