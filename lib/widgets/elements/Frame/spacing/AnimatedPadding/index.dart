@@ -47,6 +47,8 @@ class _DemoState extends State<Demo> {
       ]),
       docUrl:
           'https://docs.flutter.io/flutter/widgets/AnimatedPadding-class.html',
+          desc: 'Padding 的动画版本，无论何时给定的更改，它都会在给定的持续时间内自动完成转换缩进',
+          codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/spacing/AnimatedPadding/index.dart',
     );
   }
 }
