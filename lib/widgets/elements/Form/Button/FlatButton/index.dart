@@ -42,22 +42,33 @@ Enjoy!
 """;
 
 const String _flatTitle =
-'一个 material design "flat button"\n'
-'flat button 是显示在（零高程）material 小部件上的文本标签，通过填充颜色对触摸作出反应'
-'在工具栏上，在对话框中使用平面按钮，或与其他内容内联，但使用填充从该内容偏移，以便按钮的存在是显而易见的。Flat buttons 故意不具有可见边框，因此必须依赖于它们相对于其他内容的位置以用于上下文。在对话框和卡片中，它们应该组合在一个底角中。避免使用平面按钮，它们会与其他内容混合，例如在列表中间。\n';
+'Flat button 示例';
+
+const String _flatText0 =
+"""### **简介**
+> Flat button 是显示在（零高程）material 小部件上的文本标签
+- 通过填充颜色对触摸作出反应在工具栏上，
+- 在对话框中使用Flat button，或与其他内容内联，但使用填充从该内容偏移，以便按钮的存在是显而易见的。
+- Flat buttons 故意不具有可见边框，因此必须依赖于它们相对于其他内容的位置以用于上下文。
+- 在对话框和卡片中，它们应该组合在一个底角中。避免使用平面按钮，它们会与其他内容混合，例如在列表中间。""";
 
 const String _flatText1 =
-'1.参数的默认的按钮和禁用按钮\n'
-'如果onPressed回调为null，则该按钮将被禁用，不会对触摸做出反应，并且将按 disabledColor 属性而不是color属性指定的颜色进行着色。如果您尝试更改按钮的颜色并且没有任何效果，请检查您是否正在传递非null onPressed处理程序。\n';
+"""### **默认 FlatButton**
+> 参数的默认的按钮和禁用按钮
+- 如果onPressed回调为null，则该按钮将被禁用，不会对触摸做出反应，并且将按 disabledColor 属性而不是color属性指定的颜色进行着色。
+- 如果您尝试更改按钮的颜色并且没有任何效果，请检查您是否正在传递非null onPressed处理程序。""";
 
 
 const String _flatText2 =
-'2.按钮图标和标签的小部件创建文本按钮。\n';
+"""### **默认 FlatButton.icon**
+> 按钮图标和标签的小部件创建文本按钮。""";
 
 const String _flatText3 =
-'3.更改项参数的自定义,比如:边框，点击效果，内容文字颜色等。\n'
-'Material design flat buttons 按钮具有全帽标签，一些内部填充和一些定义的尺寸。要使应用程序的一部分具有交互式，使用墨水溅，而不是承诺这些样式选择，请考虑使用InkWell。\n'
-'flat button 的最小尺寸为88.0×36.0，可以用 ButtonTheme 覆盖。该clipBehavior参数不能为空。\n';
+"""### **自定义 FlatButton**
+> 更改项参数的自定义,比如:边框，点击效果，内容文字颜色等
+- Material design Flat buttons 按钮具有全帽标签，一些内部填充和一些定义的尺寸。
+- 要使应用程序的一部分具有交互式，使用墨水溅，而不是承诺这些样式选择，请考虑使用InkWell。
+- Flat button 的最小尺寸为88.0×36.0，可以用 ButtonTheme 覆盖。该clipBehavior参数不能为空。""";
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Form/Button/FlatButton';
@@ -88,7 +99,7 @@ Widget allFlatButtons(BuildContext context){
       child: Column(
           //mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            MarkdownBody(data: _markdownData),
+            MarkdownBody(data: _flatText0),
             textAlignBar(_flatText1),
             ButtonBar(
               alignment: MainAxisAlignment.spaceAround,
@@ -118,14 +129,18 @@ Widget allFlatButtons(BuildContext context){
             ),
             textAlignBar(_flatText3),
             FlatButtonCustom(context,'主要按钮',Colors.blue),
+            SizedBox(height: 10.0),
             FlatButtonCustom(context,'成功按钮',Colors.green),
+            SizedBox(height: 10.0),
             FlatButtonCustom(context,'信息按钮',Colors.grey),
+            SizedBox(height: 10.0),
             FlatButtonCustom(context,'警告按钮',Colors.orange),
+            SizedBox(height: 10.0),
             FlatButtonCustom(context,'危险按钮',Colors.pink),
+            SizedBox(height: 10.0),
             FlatButtonCustom(context, '点击我试试！', Colors.red,
                 new Border.all(color: Colors.brown, width: 5.0, style: BorderStyle.solid),
                     () => _showMessage('点击了 FLAT BUTTON ', context)),
-
             SizedBox(height: 20.0)
           ])
   );
@@ -164,7 +179,8 @@ Widget textAlignBar(String txt){
     child: Column(
       children: <Widget>[
         SizedBox(height: 20.0),
-        new Text(txt, style: new TextStyle(fontSize: 15.5,height: 1.2,color:Colors.blue),textAlign:TextAlign.left)
+        MarkdownBody(data: txt)
+        //new Text(txt, style: new TextStyle(fontSize: 15.5,height: 1.2,color:Colors.blue),textAlign:TextAlign.left)
       ])
   );
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../routers/application.dart';
+import '../common/Style.dart';
 import '../model/cat.dart';
 import '../model/widget.dart';
 import '../widgets/index.dart';
+
 
 
 enum CateOrWigdet {
@@ -135,7 +137,7 @@ class CategoryOrWidgetList extends StatelessWidget {
     print("categorys $categorys");
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, //每行2个
+          crossAxisCount: 3, //每行2个
           mainAxisSpacing: 0.0, //主轴(竖直)方向间距
           crossAxisSpacing: 0.0, //纵轴(水平)方向间距
           childAspectRatio: 0.8 //纵轴缩放比例
@@ -176,15 +178,16 @@ class ListCatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
         color: Colors.green,
+
         child: Container(
             decoration:  new BoxDecoration(
-              color: Colors.white,
               border: Border(
-                right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-                bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+                right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
+                bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
               ),
             ),
             child: new RaisedButton(
+                color: Colors.white,
                 onPressed: () {
                   onTap();
                 },
@@ -193,9 +196,10 @@ class ListCatWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Icon(
-                     Icons.add
+                     Icons.add,
+                     color: Color(WidgetDemoColor.iconColor)
                     ),
-                    Text(cat.name),
+                    Text(cat.name, style: TextStyle(color:  Color(WidgetDemoColor.fontColor))),
                   ],
                 )
             )
@@ -220,13 +224,13 @@ class ListItemWidget extends StatelessWidget {
         color: Colors.green,
         child: Container(
             decoration:  new BoxDecoration(
-              color: Colors.white,
               border: Border(
-                right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-                bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
+                right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
+                bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
               ),
             ),
             child: new RaisedButton(
+                color: Colors.white,
                 onPressed: () {
                   onTap();
                 },
@@ -235,9 +239,10 @@ class ListItemWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Icon(
-                        Icons.add
+                        Icons.add,
+                        color: Color.fromRGBO(0, 150, 239, 1.0)
                     ),
-                    Text(widgetPoint.name),
+                    Text(widgetPoint.name, style: TextStyle(color:  Color.fromRGBO(0, 150, 239, 1.0))),
                   ],
                 )
             )

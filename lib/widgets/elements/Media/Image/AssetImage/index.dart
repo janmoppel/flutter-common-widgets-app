@@ -6,6 +6,16 @@
  */
 import 'package:flutter/material.dart';
 import '../../../../../common/widget-demo.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+
+const _assetImageDesc0 = '''
+# test
+> test
+
+  ```
+  alert(1)
+  ```
+''';
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Media/Image/AssetImage';
@@ -15,8 +25,22 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
+    return WidgetDemo(
+      child: _buildContent(),
+      title: 'AssetImage',
+      desc: 'AssetImage 使用介绍',
+      docUrl: 'https://docs.flutter.io/flutter/painting/AssetImage-class.html',
+      codeUrl: '',
+    );
+  }
+
+  Widget _buildContent() {
     return Container(
-       child: null,
+      child: Column(
+        children: <Widget>[
+          MarkdownBody(data:_assetImageDesc0)
+        ],
+      ),
     );
   }
 }

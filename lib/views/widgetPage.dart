@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import '../routers/application.dart';
+import '../common/Style.dart';
 import '../model/cat.dart';
 import '../widgets/index.dart';
 
@@ -54,7 +55,7 @@ class SecondPageState extends State<WidgetPage> {
     print("categories in widgetPage : ${categories[0]}");
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, //每行2个
+          crossAxisCount: 3, //每行2个
           mainAxisSpacing: 0.0, //主轴(竖直)方向间距
           crossAxisSpacing: 0.0, //纵轴(水平)方向间距
           childAspectRatio: 0.8 //纵轴缩放比例
@@ -85,31 +86,29 @@ class ListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        color: Colors.green,
-        child: Container(
-            decoration:  new BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                right: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-                bottom: const BorderSide(width: 1.0, color: const Color(0xFFFF000000)),
-              ),
-            ),
-            child: new RaisedButton(
-                onPressed: () {
-                  Application.router.navigateTo(context, "/category/${category.name}");
+    return Container(
+        decoration:  new BoxDecoration(
+          border: Border(
+            right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
+            bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
+          ),
+        ),
+        child: new RaisedButton(
+            color: Colors.white,
+            onPressed: () {
+              Application.router.navigateTo(context, "/category/${category.name}");
 //                  Application.router.navigateTo(context, "/category/${category.name}");
-                },
-                child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Icon(
-                      Icons.add,
-                    ),
-                    Text(category.name),
-                  ],
-                )
+            },
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Icon(
+                  Icons.add,
+                  color: Color(WidgetDemoColor.iconColor)
+                ),
+                Text(category.name, style: TextStyle(color: Color(WidgetDemoColor.fontColor))),
+              ],
             )
         )
     );
