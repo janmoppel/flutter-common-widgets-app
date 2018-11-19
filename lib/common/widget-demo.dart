@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../routers/application.dart';
 
 class WidgetDemo extends StatelessWidget {
   final Widget child;
@@ -44,6 +45,13 @@ class WidgetDemo extends StatelessWidget {
               _launchURL(codeUrl);
             },
             icon: Icon(Icons.code),
+          ),
+          new IconButton(
+            tooltip: 'goBack home',
+            onPressed: (){
+              Navigator.popUntil(context, ModalRoute.withName('/'));
+            },
+            icon: Icon(Icons.home),
           ),
         ],
       ),
