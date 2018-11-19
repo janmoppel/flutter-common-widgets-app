@@ -5,7 +5,7 @@ import '../../../../../common/widget-demo.dart';
 const String intro = """
 # 说明
 
-具有某个单一样式的文本显示的widget组件, 显示支持一行或者多行. 默认样式会继承层级最为接近的 *DefaultStyle* 
+> 具有某个单一样式的文本显示的widget组件, 显示支持一行或者多行. 默认样式会继承层级最为接近的 *DefaultStyle* 
 当然, 你也可以重新他的样式 将 *DefaultStyle.inherit 设置为 false*
 
 # 示例代码

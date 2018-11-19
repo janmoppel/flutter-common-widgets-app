@@ -4,6 +4,7 @@ import '../common/Style.dart';
 import '../model/cat.dart';
 import '../model/widget.dart';
 import '../widgets/index.dart';
+import '../components/widget_item.dart';
 
 
 
@@ -145,15 +146,15 @@ class CategoryOrWidgetList extends StatelessWidget {
       itemCount: widgetPoints.length == 0 ? categorys.length : widgetPoints.length,
       itemBuilder: (BuildContext context, int index) {
         if (widgetPoints.length > 0) {
-          return new ListItemWidget(
-            widgetPoint: widgetPoints[index],
+          return new WidgetItem(
+            title: widgetPoints[index].name,
             onTap: () {
               onWidgetTap(widgetPoints[index]);
             },
           );
         }
-        return new ListCatWidget(
-          cat: categorys[index],
+        return new WidgetItem(
+          title: categorys[index].name,
           onTap: () {
             onCatgoryTap(categorys[index]);
           },
@@ -165,91 +166,6 @@ class CategoryOrWidgetList extends StatelessWidget {
 
 
 
-class ListCatWidget extends StatelessWidget {
-  final Cat cat;
-  final VoidCallback onTap;
-
-  ListCatWidget({
-    this.cat,
-    this.onTap
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-        color: Colors.green,
-
-        child: Container(
-            decoration:  new BoxDecoration(
-              border: Border(
-                right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-                bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-              ),
-            ),
-            child: new RaisedButton(
-                color: Colors.white,
-                onPressed: () {
-                  onTap();
-                },
-                child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Icon(
-                     Icons.add,
-                     color: Color(WidgetDemoColor.iconColor)
-                    ),
-                    Text(cat.name, style: TextStyle(color:  Color(WidgetDemoColor.fontColor))),
-                  ],
-                )
-            )
-        )
-    );
-  }
-}
-
-
-class ListItemWidget extends StatelessWidget {
-  final WidgetPoint widgetPoint;
-  final VoidCallback onTap;
-
-  ListItemWidget({
-    this.widgetPoint,
-    this.onTap
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-        color: Colors.green,
-        child: Container(
-            decoration:  new BoxDecoration(
-              border: Border(
-                right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-                bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-              ),
-            ),
-            child: new RaisedButton(
-                color: Colors.white,
-                onPressed: () {
-                  onTap();
-                },
-                child: new Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Icon(
-                        Icons.add,
-                        color: Color.fromRGBO(0, 150, 239, 1.0)
-                    ),
-                    Text(widgetPoint.name, style: TextStyle(color:  Color.fromRGBO(0, 150, 239, 1.0))),
-                  ],
-                )
-            )
-        )
-    );
-  }
-}
 
 
 

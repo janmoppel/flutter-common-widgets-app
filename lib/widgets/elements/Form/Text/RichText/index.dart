@@ -28,6 +28,27 @@ RichText(
 const String diff = """
 # RichText 与 Text.rich 对比
 
+无论是Text或者Text.rich, 查看源代码发现. 都是由RichText构建出来
+
+## 源码展示
+
+```
+// Text 源码
+@override
+  Widget build(BuildContext context) {
+      ...
+      Widget result = RichText(
+      ...
+    
+        style: effectiveTextStyle,
+        text: data,
+        children: textSpan != null ? <TextSpan>[textSpan] : null,
+      ),
+    );
+    ...
+    return result;
+  }
+```
 待补充...
 """;
 const Map<String, String> markDesc = {
