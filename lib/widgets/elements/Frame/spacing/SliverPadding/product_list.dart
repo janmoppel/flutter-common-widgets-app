@@ -20,37 +20,37 @@ final List<ProductItem> products = [
   ProductItem(
       name: 'Bueno Chocolate',
       tag: '1',
-      asset: 'images/food01.jpeg',
+      asset: 'assets/images/food01.jpeg',
       stock: 1,
       price: 71.0),
   ProductItem(
       name: 'Chocolate with berries',
       tag: '2',
-      asset: 'images/food02.jpeg',
+      asset: 'assets/images/food02.jpeg',
       stock: 1,
       price: 71.0),
   ProductItem(
       name: 'Trumoo Candies',
       tag: '3',
-      asset: 'images/food03.jpeg',
+      asset: 'assets/images/food03.jpeg',
       stock: 1,
       price: 71.0),
   ProductItem(
       name: 'Choco-coko',
       tag: '4',
-      asset: 'images/food04.jpeg',
+      asset: 'assets/images/food04.jpeg',
       stock: 1,
       price: 71.0),
   ProductItem(
       name: 'Chocolate tree',
       tag: '5',
-      asset: 'images/food05.jpeg',
+      asset: 'assets/images/food05.jpeg',
       stock: 1,
       price: 71.0),
   ProductItem(
       name: 'Chocolate',
       tag: '6',
-      asset: 'images/food06.jpeg',
+      asset: 'assets/images/food06.jpeg',
       stock: 1,
       price: 71.0),
 ];
