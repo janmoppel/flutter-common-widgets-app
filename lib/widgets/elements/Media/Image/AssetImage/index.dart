@@ -9,12 +9,67 @@ import '../../../../../common/widget-demo.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 const _assetImageDesc0 = '''
-# test
-> test
+> 为了自动执行像素密度感知资源分辨率，使用AssetImage指定图像，需要确保在控件树中的图片控件上方存在MaterialApp、WidgetsApp和MediaQuery控件
+
+## 使用命名资源文件去匹配不同像素的设备
+以'Nx'的形式命名图片资源文件，其中N标识改资源文件的标称设备像素比率
+
+假如某一个应用程序使用命名为 heart.png 的图标，此图标的表示为1.0（主图标），以及 1.5和2.0像素比。然后我们在资源包中应如下命名：
 
   ```
-  alert(1)
+  heart.png
+  1.5x/heart.png
+  2.0x/heart.png
   ```
+在具有1.0设备像素比的设备上，所选择的图片是 heart.png ，在具有1.3设备的像素比的设备上，所选择图片是 1.5x/heart.png.
+只要变量命名处于同一个目录层级，资源文件的目录层级就无关紧要。如下也是有效的目录结构。
+
+```
+  icons/heart.png
+  icons/1.5x/heart.png
+  icons/2.0x/heart.png
+```
+
+## 获取资源文件
+需要从package中获取资源文件，需要提供package的参数。我们需要在项目中的 pubspec.yaml 文件里加上具体的asset文件：
+
+```
+flutter:
+  assets:
+    - icons/heart/.png
+```
+然后可以如下使用
+```
+AssetImage('icons/heart.png');
+```
+## 在package中的资源
+如果需要从package中获取资源文件，必须提供package参数。加入下面的结构位于一个名为 my_icons 的包中，然后获取图像：
+```
+AssetImage('icons/heart.png', package: 'my_icons')
+```
+如果在package的pubspec.yaml中指定了所需资源，则会自动将其与应用程序捆绑在一起。 特别是，package本身使用的资产必须在pubspec.yaml中指定。
+
+package 还可以选择在其'lib /'文件夹中具有未在其pubspec.yaml中指定的资源。 在这种情况下，对于要捆绑的图像，应用程序必须指定要包含的图像。 例如，名为fancy_backgrounds的包可能具有
+```
+lib/backgrounds/background1.png
+lib/backgrounds/background2.png
+lib/backgrounds/background3.png
+```
+比如说第一张图片，应用程序的pubspec.yaml应该在资源部分指定它：
+```
+assets:
+   - packages/fancy_backgrounds/backgrounds/background1.png
+```
+lib /是隐含的，因此它不应包含在 assets 路径中。
+
+## Demos
+
+
+### 作为背景图片使用
+''';
+
+const _assetImageDesc1 = '''
+### 结合Image使用
 ''';
 
 class Demo extends StatefulWidget {
@@ -38,7 +93,18 @@ class _DemoState extends State<Demo> {
     return Container(
       child: Column(
         children: <Widget>[
-          MarkdownBody(data:_assetImageDesc0)
+          MarkdownBody(data: _assetImageDesc0),
+          CircleAvatar(
+            backgroundImage: AssetImage('assets/images/food01.jpeg'),
+          ),
+          MarkdownBody(data: _assetImageDesc1),
+          Container(
+            child: Image(
+              image: AssetImage('assets/images/food02.jpeg'),
+              height: 300.0,
+              width: 300.0,
+            ),
+          )
         ],
       ),
     );
