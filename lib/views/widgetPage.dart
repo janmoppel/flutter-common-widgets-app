@@ -6,6 +6,7 @@ import '../routers/application.dart';
 import '../common/Style.dart';
 import '../model/cat.dart';
 import '../widgets/index.dart';
+import '../components/widget_item.dart';
 
 
 
@@ -62,8 +63,11 @@ class SecondPageState extends State<WidgetPage> {
       ),
       itemCount: categories.length,
       itemBuilder: (BuildContext context, int index) {
-        return new ListItemWidget(
-          category: categories[index],
+        return new WidgetItem(
+          title: categories[index].name,
+          onTap: () {
+            Application.router.navigateTo(context, "/category/${categories[index].name}");
+          },
         );
       },
     );
@@ -76,43 +80,3 @@ class SecondPageState extends State<WidgetPage> {
     });
   }
 }
-
-
-class ListItemWidget extends StatelessWidget {
-
-  final Cat category;
-
-  ListItemWidget({this.category});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration:  new BoxDecoration(
-          border: Border(
-            right: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-            bottom: const BorderSide(width: 1.0, color: Color(WidgetDemoColor.borderColor)),
-          ),
-        ),
-        child: new RaisedButton(
-            color: Colors.white,
-            onPressed: () {
-              Application.router.navigateTo(context, "/category/${category.name}");
-//                  Application.router.navigateTo(context, "/category/${category.name}");
-            },
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Icon(
-                  Icons.add,
-                  color: Color(WidgetDemoColor.iconColor)
-                ),
-                Text(category.name, style: TextStyle(color: Color(WidgetDemoColor.fontColor))),
-              ],
-            )
-        )
-    );
-  }
-}
-
-
