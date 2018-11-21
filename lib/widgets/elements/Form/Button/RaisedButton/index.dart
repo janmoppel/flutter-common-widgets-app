@@ -8,10 +8,12 @@
  * 对应文档地址:https://docs.flutter.io/flutter/material/RaisedButton-class.html
  */
 import '../../../../../common/widget-demo.dart';
+import '../../../../../routers/application.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
+import './demo.dart' as raisedButton;
 
 const String _raisedTitle =
     'Raised button 示例';
@@ -64,7 +66,7 @@ class _DemoState extends State<Demo> {
     return WidgetDemo(
       title: 'RaisedButton',
       desc: _raisedTitle,
-      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Form/Button/RaisedButton/index.dart',
+      codeUrl: '${Application.github['develop']}elements/Form/Button/RaisedButton/demo.dart',
       child: allRaisedButtons(context,this),
       docUrl: 'https://docs.flutter.io/flutter/material/RaisedButton-class.html',
     );
@@ -87,9 +89,9 @@ Widget allRaisedButtons(BuildContext context,_DemoState that){
               alignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                RaisedButtonDefault(context),
+                raisedButton.RaisedButtonDefault(),
                 SizedBox(width: 20.0), // 间距
-                RaisedButtonDefault(context, false),
+                raisedButton.RaisedButtonDefault(false),
               ],
             ),
             textAlignBar(_raisedText2),
@@ -97,31 +99,31 @@ Widget allRaisedButtons(BuildContext context,_DemoState that){
               alignment: MainAxisAlignment.spaceAround,
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                RaisedButtonIconDefault(context),
-                RaisedButtonIconDefault(context, false),
+                raisedButton.RaisedButtonIconDefault(),
+                raisedButton.RaisedButtonIconDefault(false),
               ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceAround,
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                RaisedButtonIconDefault(context, true, Icons.android),
-                RaisedButtonIconDefault(context, true, Icons.announcement),
+                raisedButton.RaisedButtonIconDefault(true, Icons.android),
+                raisedButton.RaisedButtonIconDefault(true, Icons.announcement),
               ],
             ),
             textAlignBar(_raisedText3),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context,'主要按钮',Colors.blue,buttonShape),
+            raisedButton.RaisedButtonCustom('主要按钮',Colors.blue,buttonShape),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context,'成功按钮',Colors.green,buttonShape),
+            raisedButton.RaisedButtonCustom('成功按钮',Colors.green,buttonShape),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context,'信息按钮',Colors.grey,buttonShape),
+            raisedButton.RaisedButtonCustom('信息按钮',Colors.grey,buttonShape),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context,'警告按钮',Colors.orange,buttonShape),
+            raisedButton.RaisedButtonCustom('警告按钮',Colors.orange,buttonShape),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context,'危险按钮',Colors.pink,buttonShape),
+            raisedButton.RaisedButtonCustom('危险按钮',Colors.pink,buttonShape),
             SizedBox(height: 10.0),
-            RaisedButtonCustom(context, '点击切换，按钮的圆角', Colors.blue, buttonShape,
+            raisedButton.RaisedButtonCustom( '点击切换，按钮的圆角', Colors.blue, buttonShape,
                     () => that.setButtonShapeType()),
             SizedBox(height: 20.0)
           ])
@@ -170,19 +172,6 @@ Widget textAlignBar(String txt){
 }
 
 /*
-* RaisedButton 默认按钮的实例
-* isDisabled:是否是禁用
-* */
-Widget RaisedButtonDefault(BuildContext context, [bool isDisabled = true]) {
-  return RaisedButton(
-    // 文本内容
-      child: const Text('默认按钮', semanticsLabel: 'FLAT BUTTON 1'),
-      onPressed: isDisabled ? () {
-      } : null
-  );
-}
-
-/*
 * 绘制边框信息,比如是否有边框,是否是圆角
 * */
 ShapeBorder drawShape(String type){
@@ -220,86 +209,12 @@ ShapeBorder drawShape(String type){
 }
 
 /*
-* 创建随机颜色
+* 取随机颜色
 * */
 Color _randomColor() {
   var red = Random.secure().nextInt(255);
   var greed = Random.secure().nextInt(255);
   var blue = Random.secure().nextInt(255);
   return Color.fromARGB(255, red, greed, blue);
-}
-
-
-/*
-* RaisedButton.icon 默认按钮的实例
-* Create a text button from a pair of widgets that serve as the button's icon and label
-* isDisabled:是否是禁用
-* */
-Widget RaisedButtonIconDefault(BuildContext context, [bool isDisabled = true, IconData icon]) {
-  final _icon = (icon is IconData) ? icon : Icons.add_circle;
-  return RaisedButton.icon(
-    // 文本内容
-      icon: Icon(_icon, size: 25.0,color:_randomColor()),
-      label: Text('默认按钮', semanticsLabel: 'FLAT BUTTON 2'),
-      onPressed: isDisabled ? () {
-        //_showMessage('点击了 FLAT BUTTON ', context);
-      } : null
-  );
-}
-
-/*
-* RaisedButton 自定义的实例
-* */
-Widget RaisedButtonCustom(BuildContext context,
-    [
-      String txt = '自定义按钮',
-      Color color = Colors.blueAccent,
-      ShapeBorder shape,
-      VoidCallback onPressed
-    ]) {
-  final _onPressed = onPressed;
-  return RaisedButton(
-    // 文本内容
-      child: Text(txt, semanticsLabel: 'FLAT BUTTON 2'),
-      // 按钮颜色
-      color: color,
-      // 按钮亮度
-      colorBrightness: Brightness.dark,
-      // 高亮时的背景色
-      //highlightColor: Colors.yellow,
-      // 失效时的背景色
-      disabledColor: Colors.grey,
-      // 该按钮上的文字颜色，但是前提是不设置字体自身的颜色时才会起作用
-      textColor: Colors.white,
-      // 按钮失效时的文字颜色，同样的不能使用文本自己的样式或者颜色时才会起作用
-      disabledTextColor: Colors.grey,
-      // 按钮主题,主要用于与ButtonTheme和ButtonThemeData一起使用来定义按钮的基色,RaisedButton，RaisedButton，OutlineButton，它们是基于环境ButtonTheme配置的
-      //ButtonTextTheme.accent，使用模版颜色的;ButtonTextTheme.normal，按钮文本是黑色或白色取决于。ThemeData.brightness;ButtonTextTheme.primary，按钮文本基于。ThemeData.primaryColor.
-      textTheme: ButtonTextTheme.normal,
-      // 按钮内部,墨汁飞溅的颜色,点击按钮时的渐变背景色，当你不设置高亮背景时才会看的更清楚
-      splashColor: Colors.deepPurple,
-      // 抗锯齿能力,抗锯齿等级依次递增,none（默认),hardEdge,antiAliasWithSaveLayer,antiAlias
-      clipBehavior: Clip.antiAlias,
-      padding: new EdgeInsets.only(
-          bottom: 5.0, top: 5.0, left: 30.0, right: 30.0),
-      shape: (shape is ShapeBorder) ? shape : new Border.all(
-        // 设置边框样式
-        color: Colors.grey,
-        width: 2.0,
-        style: BorderStyle.solid,
-      ),
-      // RaisedButton 的点击事件
-      onPressed: () {
-        // Perform some action
-        if (_onPressed is VoidCallback) {
-          _onPressed();
-        }
-      },
-      // 改变高亮颜色回掉函数，一个按钮会触发两次，按下后改变时触发一次，松手后恢复原始颜色触发一次
-      // 参数 bool，按下后true，恢复false
-      onHighlightChanged: (isClick) {
-        print(isClick);
-      }
-  );
 }
 

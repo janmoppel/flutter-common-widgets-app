@@ -8,10 +8,13 @@
  * 对应文档地址:https://docs.flutter.io/flutter/material/FlatButton-class.html
  */
 import '../../../../../common/widget-demo.dart';
+import '../../../../../routers/application.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
+import './demo.dart' as flatButton;
+
 const String _markdownData = """# Markdown Example
 Markdown allows you to easily include formatted text, images, and even formatted Dart code in your app.
 ## Styling
@@ -83,7 +86,7 @@ class _DemoState extends State<Demo> {
     return WidgetDemo(
       title: 'FlatButton',
       desc: _flatTitle,
-      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Form/Button/FlatButton/index.dart',
+      codeUrl: '${Application.github['develop']}elements/Form/Button/FlatButton/demo.dart',
       child: allFlatButtons(context),
       docUrl: 'https://docs.flutter.io/flutter/material/FlatButton-class.html',
     );
@@ -105,9 +108,9 @@ Widget allFlatButtons(BuildContext context){
               alignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                FlatButtonDefault(context),
+                flatButton.FlatButtonDefault(),
                 SizedBox(width: 20.0), // 间距
-                FlatButtonDefault(context, false),
+                flatButton.FlatButtonDefault(false),
               ],
             ),
             textAlignBar(_flatText2),
@@ -115,30 +118,31 @@ Widget allFlatButtons(BuildContext context){
               alignment: MainAxisAlignment.spaceAround,
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                FlatButtonIconDefault(context),
-                FlatButtonIconDefault(context, false),
+                flatButton.FlatButtonIconDefault(),
+                flatButton.FlatButtonIconDefault(false),
               ],
             ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceAround,
               //mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                FlatButtonIconDefault(context, true, Icons.android),
-                FlatButtonIconDefault(context, true, Icons.announcement),
+                flatButton.FlatButtonIconDefault(true, Icons.android),
+                flatButton.FlatButtonIconDefault(true, Icons.announcement),
               ],
             ),
             textAlignBar(_flatText3),
-            FlatButtonCustom(context,'主要按钮',Colors.blue),
+            //flatButton.FlatButtonCustom(context,'主要按钮',Colors.blue),
+            flatButton.FlatButtonCustom('主要按钮',Colors.blue),
             SizedBox(height: 10.0),
-            FlatButtonCustom(context,'成功按钮',Colors.green),
+            flatButton.FlatButtonCustom('成功按钮',Colors.green),
             SizedBox(height: 10.0),
-            FlatButtonCustom(context,'信息按钮',Colors.grey),
+            flatButton.FlatButtonCustom('信息按钮',Colors.grey),
             SizedBox(height: 10.0),
-            FlatButtonCustom(context,'警告按钮',Colors.orange),
+            flatButton.FlatButtonCustom('警告按钮',Colors.orange),
             SizedBox(height: 10.0),
-            FlatButtonCustom(context,'危险按钮',Colors.pink),
+            flatButton.FlatButtonCustom('危险按钮',Colors.pink),
             SizedBox(height: 10.0),
-            FlatButtonCustom(context, '点击我试试！', Colors.red,
+            flatButton.FlatButtonCustom('点击我试试！', Colors.red,
                 new Border.all(color: Colors.brown, width: 5.0, style: BorderStyle.solid),
                     () => _showMessage('点击了 FLAT BUTTON ', context)),
             SizedBox(height: 20.0)
@@ -186,96 +190,3 @@ Widget textAlignBar(String txt){
       ])
   );
 }
-
-/*
-* FlatButton 默认按钮的实例
-* isDisabled:是否是禁用
-* */
-Widget FlatButtonDefault(BuildContext context, [bool isDisabled = true]) {
-  return FlatButton(
-      // 文本内容
-      child: const Text('默认按钮', semanticsLabel: 'FLAT BUTTON 1'),
-      onPressed: isDisabled ? () {
-      } : null
-  );
-}
-
-/*
-* FlatButton.icon 默认按钮的实例
-* Create a text button from a pair of widgets that serve as the button's icon and label
-* isDisabled:是否是禁用
-* */
-Widget FlatButtonIconDefault(BuildContext context, [bool isDisabled = true, IconData icon]) {
-  final _icon = (icon is IconData) ? icon : Icons.add_circle;
-  Color _randomColor() {
-    var red = Random.secure().nextInt(255);
-    var greed = Random.secure().nextInt(255);
-    var blue = Random.secure().nextInt(255);
-    return Color.fromARGB(255, red, greed, blue);
-  }
-  return FlatButton.icon(
-    // 文本内容
-      icon: Icon(_icon, size: 25.0,color:_randomColor()),
-      label: Text('默认按钮', semanticsLabel: 'FLAT BUTTON 2'),
-      onPressed: isDisabled ? () {
-        //_showMessage('点击了 FLAT BUTTON ', context);
-      } : null
-  );
-}
-
-/*
-* FlatButton 自定义的实例
-* */
-Widget FlatButtonCustom(BuildContext context,
-    [
-      String txt = '自定义按钮',
-      Color color = Colors.blueAccent,
-      ShapeBorder shape,
-      VoidCallback onPressed
-    ]) {
-  final _onPressed = onPressed;
-  return FlatButton(
-    // 文本内容
-      child: Text(txt, semanticsLabel: 'FLAT BUTTON 2'),
-      // 按钮颜色
-      color: color,
-      // 按钮亮度
-      colorBrightness: Brightness.dark,
-      // 高亮时的背景色
-      //highlightColor: Colors.yellow,
-      // 失效时的背景色
-      disabledColor: Colors.grey,
-      // 该按钮上的文字颜色，但是前提是不设置字体自身的颜色时才会起作用
-      textColor: Colors.white,
-      // 按钮失效时的文字颜色，同样的不能使用文本自己的样式或者颜色时才会起作用
-      disabledTextColor: Colors.grey,
-      // 按钮主题,主要用于与ButtonTheme和ButtonThemeData一起使用来定义按钮的基色,RaisedButton，FlatButton，OutlineButton，它们是基于环境ButtonTheme配置的
-      //ButtonTextTheme.accent，使用模版颜色的;ButtonTextTheme.normal，按钮文本是黑色或白色取决于。ThemeData.brightness;ButtonTextTheme.primary，按钮文本基于。ThemeData.primaryColor.
-      textTheme: ButtonTextTheme.normal,
-      // 按钮内部,墨汁飞溅的颜色,点击按钮时的渐变背景色，当你不设置高亮背景时才会看的更清楚
-      splashColor: Colors.deepPurple,
-      // 抗锯齿能力,抗锯齿等级依次递增,none（默认),hardEdge,antiAliasWithSaveLayer,antiAlias
-      clipBehavior: Clip.antiAlias,
-      padding: new EdgeInsets.only(
-          bottom: 5.0, top: 5.0, left: 30.0, right: 30.0),
-      shape: (shape is ShapeBorder) ? shape : new Border.all(
-        // 设置边框样式
-        color: Colors.grey,
-        width: 2.0,
-        style: BorderStyle.solid,
-      ),
-      // FlatButton 的点击事件
-      onPressed: () {
-        // Perform some action
-        if (_onPressed is VoidCallback) {
-          _onPressed();
-        }
-      },
-      // 改变高亮颜色回掉函数，一个按钮会触发两次，按下后改变时触发一次，松手后恢复原始颜色触发一次
-      // 参数 bool，按下后true，恢复false
-      onHighlightChanged: (isClick) {
-        print(isClick);
-      }
-  );
-}
-
