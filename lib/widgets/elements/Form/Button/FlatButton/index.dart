@@ -86,7 +86,7 @@ class _DemoState extends State<Demo> {
     return WidgetDemo(
       title: 'FlatButton',
       desc: _flatTitle,
-      codeUrl: '${Application.github['develop']}elements/Form/Button/FlatButton/demo.dart',
+      codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/FlatButton/demo.dart',
       child: allFlatButtons(context),
       docUrl: 'https://docs.flutter.io/flutter/material/FlatButton-class.html',
     );
