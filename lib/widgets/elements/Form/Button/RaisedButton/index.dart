@@ -136,18 +136,20 @@ void _showMessage(String name, BuildContext context) {
   showDialog(
     // alert 的父级
     context: context,
-    child: new AlertDialog(
-        title: new Text('提示'),
-        content: new Text(name),
-        actions: <Widget>[
-          new RaisedButton(
-            // alert 的取消按钮
-              onPressed: () {
-                // 取消的事件
-                Navigator.of(context).pop(true);
-              },
-              child: new Text('取消'))
-        ]),
+    builder: (BuildContext context) {
+      return AlertDialog(
+          title: new Text('提示'),
+          content: new Text(name),
+          actions: <Widget>[
+            new FlatButton(
+              // alert 的取消按钮
+                onPressed: () {
+                  // 取消的事件
+                  Navigator.of(context).pop(true);
+                },
+                child: new Text('取消'))
+          ]);
+    }
   );
 }
 
