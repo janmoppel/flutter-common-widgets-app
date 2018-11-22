@@ -56,7 +56,7 @@ class _DemoState extends State<Demo> {
       title: 'Row',
       desc: 'Layout-Row 使用',
       codeUrl:
-          'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/Table/Table/index.dart',
+         'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Layout/Row/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/Row-class.html',
       child: new Container(
         child: _RowCreate(),
