@@ -15,4 +15,5 @@ List<WidgetPoint> widgetPoints = [
     routerName: Column.Demo.routeName,
     buildRouter: (BuildContext context) => Column.Demo(),
   ),
+
 ];
