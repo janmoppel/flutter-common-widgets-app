@@ -65,7 +65,7 @@ class _CategoryHome extends State<CategoryHome> {
     int depth = catHistory.length;
 
     // 继续搜索显示下一级depth: depth + 1, parentId: parentCat.id
-    List<Cat> _categories = await catControl.getList(new Cat(parentId: parentCat.id, depth: depth + 1));
+    List<Cat> _categories = await catControl.getList(new Cat(parentId: parentCat.id));
     List<WidgetPoint> _widgetPoints = new List();
     if (_categories.isEmpty) {
       _widgetPoints = await widgetControl.getList(new WidgetPoint(catId: parentCat.id));
