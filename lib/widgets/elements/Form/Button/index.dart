@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 
 import 'FlatButton/index.dart' as FlatButton;
 import 'RaisedButton/index.dart' as RaisedButton;
+import 'OutlineButton/index.dart' as OutlineButton;
 
 
 List<WidgetPoint> widgetPoints = [
@@ -15,5 +16,10 @@ List<WidgetPoint> widgetPoints = [
     name: 'RaisedButton',
     routerName: RaisedButton.Demo.routeName,
     buildRouter: (BuildContext context) => RaisedButton.Demo(),
+  ),
+  WidgetPoint(
+    name: 'OutlineButton',
+    routerName: OutlineButton.Demo.routeName,
+    buildRouter: (BuildContext context) => OutlineButton.Demo(),
   ),
 ];
