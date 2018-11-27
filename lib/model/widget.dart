@@ -126,4 +126,17 @@ class WidgetControlModel {
     }
     return new WidgetPoint.fromJSON(json.first);
   }
+  Future<List<WidgetPoint>> search(String name) async {
+    List json = await sql.search(conditions: {'name': name});
+
+    if (json.isEmpty) {
+      return [];
+    }
+
+    List<WidgetPoint> widgets = json.map((json) {
+      return new WidgetPoint.fromJSON(json);
+    }).toList();
+
+    return widgets;
+  }
 }

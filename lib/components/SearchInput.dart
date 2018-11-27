@@ -16,22 +16,29 @@ class MaterialSearchResult<T> extends StatelessWidget {
     this.value,
     this.text,
     this.icon,
+    this.onTap
   }) : super(key: key);
 
   final T value;
+  final VoidCallback onTap;
   final String text;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: new Row(
-        children: <Widget>[
-          new Container(width: 30.0, child: new Icon(icon)),
-          new Expanded(child: new Text(text, style: Theme.of(context).textTheme.subhead)),
-        ],
+    return new InkWell(
+      onTap: this.onTap,
+      child: new Container(
+        height: 64.0,
+        padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+        child: new Row(
+          children: <Widget>[
+            new Container(width: 30.0, child: new Icon(icon)) ?? null,
+            new Expanded(child: new Text(text, style: Theme.of(context).textTheme.subhead)),
+            new Text(text, style: Theme.of(context).textTheme.subhead)
+          ],
+        ),
       ),
-      height: 64.0,
     );
   }
 }

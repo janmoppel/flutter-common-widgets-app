@@ -26,6 +26,5 @@ class Routes {
       });
       router.define('${demo.routerName}', handler: handler);
     });
-
   }
 }
