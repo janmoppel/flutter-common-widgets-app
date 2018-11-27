@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+//import 'package:flutter_markdown/flutter_markdown.dart';
 import '../../../../../common/widget-demo.dart';
+import '../../../../../components/markdown.dart';
 
 const String intro = """
 # 说明
@@ -81,14 +82,14 @@ class _Demo extends State<Demo> {
       desc: 'Material Text show',
       child: new Column(
         children: <Widget>[
-          MarkdownBody(data: markDesc['intro'] ),
+          MarkdownBody(markDesc['intro']),
           Text(
             'Hello, World! How are you?',
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          MarkdownBody(data: markDesc['left']),
+          MarkdownBody(markDesc['left']),
           Container(
             width: 750.0,
             color: Color(0xFF0096ef),
@@ -99,7 +100,7 @@ class _Demo extends State<Demo> {
               style: TextStyle(color: Color(0xffffffff)),
             ),
           ),
-          MarkdownBody(data: markDesc['rich']),
+          MarkdownBody( markDesc['rich']),
           Text.rich(
             TextSpan(
               text: 'Hello', // default text style
