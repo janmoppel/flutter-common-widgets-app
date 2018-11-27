@@ -102,14 +102,14 @@ class ChildCateories extends StatelessWidget {
       List<Widget> rows = [];
       for(Cat item in items) {
         rows.add(
-          new Expanded(
-            child: new WidgetItem(
-              title: item.name,
-              onTap: () {
-              Application.router.navigateTo(context, "/category/${item.name}");
-              },
-            ),
-          )
+            new Expanded(
+              child: new WidgetItem(
+                title: item.name,
+                onTap: () {
+                  Application.router.navigateTo(context, "/category/${item.name}");
+                },
+              ),
+            )
 
         );
       }
