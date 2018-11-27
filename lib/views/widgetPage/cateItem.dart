@@ -136,7 +136,8 @@ class ChildCateories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (categories.isEmpty) {
-      return this.buildEmpty();
+      return this.buildEmpty
+        ();
     }
     return this.buildGrid(context);
   }

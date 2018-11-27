@@ -10,6 +10,7 @@ import 'routers/routers.dart';
 import 'routers/application.dart';
 import 'common/provider.dart';
 import 'model/widget.dart';
+import './widgets/index.dart';
 import 'package:flutter_rookie_book/components/SearchInput.dart';
 import 'common/Style.dart';
 
@@ -52,6 +53,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  WidgetControlModel widgetControl = new WidgetControlModel();
   TabController controller;
   bool isSearch = false;
   String data = '无';
@@ -88,22 +90,39 @@ class _MyHomePageState extends State<MyHomePage>
     controller.dispose();
     super.dispose();
   }
-  Widget buildSearchInput(){
-    return new SearchInput((value) async{
-      return null;
-//      if(value != ''){
-//        widgetModel = new WidgetModel(db);
-//        List<Map> list = await widgetModel.search(value);
-//        print('list $list');
-//        return list.map((item) => new MaterialSearchResult<String>(
-//          value: item['name'],
-//          text: item['name'] + '       ' + item['cnName'],
-//        )).toList();
-//      }else{
-//        return null;
-//      }
+  void onWidgetTap(WidgetPoint widgetPoint, BuildContext context) {
+    List widgetDemosList = new WidgetDemoList().getDemos();
+    String targetName = widgetPoint.name;
+    String targetRouter = '/category/error/404';
+    widgetDemosList.forEach((item) {
+      if (item.name == targetName) {
+        targetRouter = item.routerName;
+      }
+    });
+    print("router> ${targetRouter}");
+    Application.router.navigateTo(context, "${targetRouter}");
+  }
 
-    },(value){},(){});
+
+  Widget buildSearchInput(BuildContext context){
+    return new SearchInput((value) async{
+      if(value != ''){
+        List<WidgetPoint> list = await widgetControl.search(value);
+
+        return list.map((item) => new MaterialSearchResult<String>(
+          value: item.name,
+          text: item.name,
+          onTap: () {
+            onWidgetTap(item, context);
+          },
+        )).toList();
+      }else{
+        return null;
+      }
+
+    },(value){
+      print("Value>>>$value");
+    },(){});
 
   }
 
@@ -112,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage>
     return new Scaffold(
         appBar: new AppBar(
 //          backgroundColor: new Color(AppColor.white),
-            title: buildSearchInput()),
+            title: buildSearchInput(context)),
         body: new TabBarView(controller: controller, children: <Widget>[
           new FirstPage(),
           new WidgetPage(db),

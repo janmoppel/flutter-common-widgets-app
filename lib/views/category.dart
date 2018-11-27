@@ -137,7 +137,6 @@ class CategoryOrWidgetList extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    print("categorys $categorys");
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3, //每行2个
