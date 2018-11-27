@@ -156,6 +156,25 @@ class _MaterialSearchState<T> extends State<MaterialSearch> {
     super.dispose();
     _resultsTimer?.cancel();
   }
+  Widget buildBody(List results) {
+    if (_loading) {
+      return new Center(
+          child: new Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: new CircularProgressIndicator()
+          )
+      );
+    }
+    if (results.isNotEmpty) {
+      var content = new SingleChildScrollView(
+          child: new Column(
+            children: results
+          )
+      );
+      return content;
+    }
+    return Center(child: Text("暂无数据"));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,24 +230,8 @@ class _MaterialSearchState<T> extends State<MaterialSearch> {
           ),
         ],
       ),
-      body: _loading
-          ? new Center(
-        child: new Padding(
-            padding: const EdgeInsets.only(top: 50.0),
-            child: new CircularProgressIndicator()
-        ),
-      )
-          : new SingleChildScrollView(
-        child: new Column(
-          children: results.map((MaterialSearchResult result) {
-            return new InkWell(
-              onTap: () => widget.onSelect(result.value),
-              child: result,
-            );
-          }).toList(),
-        ),
-      ),
-    );
+      body: buildBody(results),
+      );
   }
 }
 
