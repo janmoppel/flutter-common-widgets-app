@@ -9,6 +9,8 @@ import 'views/FourthPage.dart';
 import 'routers/routers.dart';
 import 'routers/application.dart';
 import 'common/provider.dart';
+import 'model/widget.dart';
+import './widgets/index.dart';
 import 'package:flutter_rookie_book/components/SearchInput.dart';
 
 const int ThemeColor = 0xFFC91B3A;
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'title',
       theme: new ThemeData(
-        primaryColor:  Color(ThemeColor),
+        primaryColor: Color(ThemeColor),
         backgroundColor: Color(0xFFEFEFEF),
         accentColor: Color(0xFF888888),
         textTheme: TextTheme(
@@ -61,6 +63,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  WidgetControlModel widgetControl = new WidgetControlModel();
   TabController controller;
   bool isSearch = false;
   String data = '无';
@@ -98,18 +101,45 @@ class _MyHomePageState extends State<MyHomePage>
     super.dispose();
   }
 
-  Widget buildSearchInput() {
+  void onWidgetTap(WidgetPoint widgetPoint, BuildContext context) {
+    List widgetDemosList = new WidgetDemoList().getDemos();
+    String targetName = widgetPoint.name;
+    String targetRouter = '/category/error/404';
+    widgetDemosList.forEach((item) {
+      if (item.name == targetName) {
+        targetRouter = item.routerName;
+      }
+    });
+    print("router> ${targetRouter}");
+    Application.router.navigateTo(context, "${targetRouter}");
+  }
+
+  Widget buildSearchInput(BuildContext context) {
     return new SearchInput((value) async {
-      return null;
-    }, (value) {}, () {});
+      if (value != '') {
+        List<WidgetPoint> list = await widgetControl.search(value);
+
+        return list
+            .map((item) => new MaterialSearchResult<String>(
+                  value: item.name,
+                  text: item.name,
+                  onTap: () {
+                    onWidgetTap(item, context);
+                  },
+                ))
+            .toList();
+      } else {
+        return null;
+      }
+    }, (value) {
+      print("Value>>>$value");
+    }, () {});
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: buildSearchInput(),
-        ),
+        appBar: new AppBar(title: buildSearchInput(context)),
         body: new TabBarView(controller: controller, children: <Widget>[
           new FirstPage(),
           new WidgetPage(db),
