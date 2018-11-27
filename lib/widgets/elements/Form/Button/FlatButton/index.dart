@@ -44,8 +44,6 @@ void main() {
 Enjoy!
 """;
 
-const String _flatTitle =
-'Flat button 示例';
 
 const String _flatText0 =
 """### **简介**
@@ -85,7 +83,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'FlatButton',
-      desc: _flatTitle,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/FlatButton/demo.dart',
       child: allFlatButtons(context),
       docUrl: 'https://docs.flutter.io/flutter/material/FlatButton-class.html',

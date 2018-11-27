@@ -13,8 +13,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
 
-const String _textFieldTitle =
-    'Text Field 示例';
 
 const String _textFieldText0 =
 """### **简介**
@@ -59,7 +57,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'TextField',
-      desc: _textFieldTitle,
       codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Input/TextField/index.dart',
       child: renderAll(context,this),
       docUrl: 'https://docs.flutter.io/flutter/material/TextField-class.html',

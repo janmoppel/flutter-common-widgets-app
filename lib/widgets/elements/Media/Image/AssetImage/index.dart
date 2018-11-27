@@ -83,7 +83,7 @@ class _DemoState extends State<Demo> {
     return WidgetDemo(
       child: _buildContent(),
       title: 'AssetImage',
-      desc: 'AssetImage 使用介绍',
+      // desc: 'AssetImage 使用介绍',
       docUrl: 'https://docs.flutter.io/flutter/painting/AssetImage-class.html',
       codeUrl: '',
     );

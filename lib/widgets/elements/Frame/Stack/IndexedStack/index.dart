@@ -38,7 +38,7 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'IndexedStack',
-      desc: _desc,
+      // desc: _desc,
       codeUrl:
           'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Stack/IndexedStack/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/IndexedStack-class.html',

@@ -45,8 +45,8 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Column',
-      desc: 'Layout-Column 使用',
-      codeUrl:'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Layout/Column',
+      // desc: 'Layout-Column 使用',
+      codeUrl:'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/develop/lib/widgets/elements/Frame/Layout/Column/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/Column-class.html',
       child: new Container(
         child: column.ColumnDefault(_Text0),

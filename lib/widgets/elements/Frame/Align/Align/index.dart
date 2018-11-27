@@ -34,13 +34,11 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-  String _desc = "Align 使用";
 
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Align',
-      desc: _desc,
       codeUrl:'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Align/Align/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/Align-class.html',
       child: new Container(

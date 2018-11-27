@@ -78,7 +78,6 @@ class _Demo extends State<Demo> {
       title: "Text",
       docUrl: 'flutter/widgets/Text-class.html',
       codeUrl: 'elements/Form/Text/Text/index.dart',
-      desc: 'Material Text show',
       child: new Column(
         children: <Widget>[
           MarkdownBody(data: markDesc['intro'] ),

@@ -10,8 +10,10 @@ import 'routers/routers.dart';
 import 'routers/application.dart';
 import 'common/provider.dart';
 import 'model/widget.dart';
+import './widgets/index.dart';
 import 'package:flutter_rookie_book/components/SearchInput.dart';
-import 'common/Style.dart';
+
+const int ThemeColor = 0xFFC91B3A;
 
 class MyApp extends StatelessWidget {
   MyApp() {
@@ -25,7 +27,17 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'title',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(ThemeColor),
+        backgroundColor: Color(0xFFEFEFEF),
+        accentColor: Color(0xFF888888),
+        textTheme: TextTheme(
+          //设置Material的默认字体样式
+          body1: TextStyle(color: Color(0xFF888888), fontSize: 16.0),
+        ),
+        iconTheme: IconThemeData(
+          color: Color(ThemeColor),
+          size: 35.0,
+        ),
       ),
       home: new MyHomePage(),
       onGenerateRoute: Application.router.generator,
@@ -35,8 +47,7 @@ class MyApp extends StatelessWidget {
 
 var db;
 
-void main() async{
-
+void main() async {
   final provider = new Provider();
   await provider.init(true);
   db = Provider.db;
@@ -52,6 +63,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  WidgetControlModel widgetControl = new WidgetControlModel();
   TabController controller;
   bool isSearch = false;
   String data = '无';
@@ -88,31 +100,46 @@ class _MyHomePageState extends State<MyHomePage>
     controller.dispose();
     super.dispose();
   }
-  Widget buildSearchInput(){
-    return new SearchInput((value) async{
-      return null;
-//      if(value != ''){
-//        widgetModel = new WidgetModel(db);
-//        List<Map> list = await widgetModel.search(value);
-//        print('list $list');
-//        return list.map((item) => new MaterialSearchResult<String>(
-//          value: item['name'],
-//          text: item['name'] + '       ' + item['cnName'],
-//        )).toList();
-//      }else{
-//        return null;
-//      }
 
-    },(value){},(){});
+  void onWidgetTap(WidgetPoint widgetPoint, BuildContext context) {
+    List widgetDemosList = new WidgetDemoList().getDemos();
+    String targetName = widgetPoint.name;
+    String targetRouter = '/category/error/404';
+    widgetDemosList.forEach((item) {
+      if (item.name == targetName) {
+        targetRouter = item.routerName;
+      }
+    });
+    print("router> ${targetRouter}");
+    Application.router.navigateTo(context, "${targetRouter}");
+  }
 
+  Widget buildSearchInput(BuildContext context) {
+    return new SearchInput((value) async {
+      if (value != '') {
+        List<WidgetPoint> list = await widgetControl.search(value);
+
+        return list
+            .map((item) => new MaterialSearchResult<String>(
+                  value: item.name,
+                  text: item.name,
+                  onTap: () {
+                    onWidgetTap(item, context);
+                  },
+                ))
+            .toList();
+      } else {
+        return null;
+      }
+    }, (value) {
+      print("Value>>>$value");
+    }, () {});
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-//          backgroundColor: new Color(AppColor.white),
-            title: buildSearchInput()),
+        appBar: new AppBar(title: buildSearchInput(context)),
         body: new TabBarView(controller: controller, children: <Widget>[
           new FirstPage(),
           new WidgetPage(db),
@@ -125,10 +152,25 @@ class _MyHomePageState extends State<MyHomePage>
             color: const Color(0xFFF0EEEF), //底部导航栏主题颜色
             child: new Container(
                 height: 65.0,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF0F0F0),
+                  boxShadow: <BoxShadow>[
+                    new BoxShadow(
+                      color: const Color(0xFFd0d0d0),
+                      blurRadius: 3.0,
+                      spreadRadius: 2.0,
+                      offset: Offset(-1.0, -1.0),
+                    ),
+                  ],
+                ),
                 child: new TabBar(
                     controller: controller,
-                    indicatorColor: Colors.blue, //tab标签的下划线颜色
-                    labelColor: const Color(0xFF000000),
+                    indicatorColor:
+                        Theme.of(context).primaryColor, //tab标签的下划线颜色
+                    // labelColor: const Color(0xFF000000),
+                    indicatorWeight: 3.0,
+                    labelColor: Theme.of(context).primaryColor,
+                    unselectedLabelColor: const Color(0xFF8E8E8E),
                     tabs: <Tab>[
                       new Tab(text: '业界动态', icon: new Icon(Icons.language)),
                       new Tab(text: '组件', icon: new Icon(Icons.extension)),
@@ -138,14 +180,18 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   void _onTabChange() {
-    this.setState(() {
-      appBarTitle = tabData[controller.index]['text'];
-    });
+    if (this.mounted) {
+      this.setState(() {
+        appBarTitle = tabData[controller.index]['text'];
+      });
+    }
   }
 
   void _onDataChange(val) {
-    setState(() {
-      data = val;
-    });
+    if (this.mounted) {
+      setState(() {
+        data = val;
+      });
+    }
   }
 }

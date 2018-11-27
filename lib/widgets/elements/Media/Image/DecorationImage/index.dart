@@ -33,7 +33,7 @@ class _DemoState extends State<Demo> {
           'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/develop/lib/widgets/elements/Media/Image/DecorationImage/index.dart?1542705856254',
       docUrl:
           'https://docs.flutter.io/flutter/painting/DecorationImage-class.html',
-      desc: 'DecorationImage 使用介绍',
+      // desc: 'DecorationImage 使用介绍',
       title: 'DecorationImage',
     );
   }

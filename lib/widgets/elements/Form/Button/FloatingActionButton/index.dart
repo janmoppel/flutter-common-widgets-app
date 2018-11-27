@@ -4,8 +4,8 @@
  * Date: 2018/11/14
  * Time: 下午4:31
  * email: zhu.yan@alibaba-inc.com
- * target: OutlineButton 的示例
- * 对应文档地址:https://docs.flutter.io/flutter/material/OutlineButton-class.html
+ * target: FloatingActionButton 的示例
+ * 对应文档地址:https://docs.flutter.io/flutter/material/FloatingActionButton-class.html
  */
 import '../../../../../common/widget-demo.dart';
 import '../../../../../routers/application.dart';
@@ -13,39 +13,37 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
-import './demo.dart' as outlineButton;
+import './demo.dart' as floatingActionButton;
 
+const String _floatingActionTitle =
+    'FloatingAction Button 示例';
 
-const String _outlineText0 =
+const String _floatingActionText0 =
 """### **简介**
-> Outline button “边框按钮”
-- RaisedButton和FlatButton之间的交叉：一个有边框的按钮，当按下按钮时，其高度增加，背景变得不透明。。
-- 高程最初为0.0，其背景颜色 为透明。按下按钮时，其背景变为不透明，然后其高程增加到highlightElevation。
+> FloatingAction Button “浮动动作按钮”
+- FloatingActionButton 按钮是一个圆形图标按钮，悬停在内容上以提升应用程序中的主要操作。浮动操作按钮最常用于Scaffold.floatingActionButton字段中。。
+- 每个屏幕最多使用一个浮动操作按钮。浮动操作按钮应用于积极操作，例如“创建”，“共享”或“导航”。
+- 一般用来处理界面中最常用，最基础的用户动作。它一般出现在屏幕内容的前面，通常是一个圆形，中间有一个图标。 FAB有三种类型：regular, mini, and extended。不要强行使用FAB，只有当使用场景符合FAB功能的时候使用才最为恰当
 """;
 
-const String _outlineText1 =
-"""### **默认 OutlineButton**
-> 参数的默认的按钮和禁用按钮
-- 如果onPressed回调为null，则该按钮将被禁用，不会对触摸做出反应，并且将按 disabledColor 属性而不是color属性指定的颜色进行着色。
-- 如果您尝试更改按钮的颜色并且没有任何效果，请检查您是否正在传递非null onPressed处理程序。""";
+const String _floatingActionText1 =
+"""### **默认 FloatingActionButton**
+> 默认参数的按钮和禁用按钮
+- 如果onPressed回调为null，则该按钮将被禁用，并且不会对触摸作出反应,不会变成灰色。
+""";
 
-
-const String _outlineText2 =
-"""### **默认 OutlineButton.icon**
-> 按钮图标和标签的小部件创建文本按钮。""";
-
-const String _outlineText3 =
-"""### **自定义 OutlineButton**
+const String _floatingActionText2 =
+"""### **自定义 FloatingActionButton**
 > 更改项参数的自定义,比如:边框，点击效果，内容文字,颜色,圆角等
-- Outline buttons 按钮有一个边框，其形状由形状定义 ，其外观由borderSide，disabledBorderColor和highlightedBorderColor定义。
-- 如果您想要水龙头的墨水效果，但又不想使用按钮，请考虑直接使用InkWell。
-- Outline buttons 的最小尺寸为88.0×36.0，可以用ButtonTheme 覆盖。
-- 通过 shape 属性的设置，改变边框样式和圆角。
-- 可以尝试长按按钮，按钮突出显示。
+""";
+
+const String _floatingActionText3 =
+"""### **自定义 FloatingActionButton.extended**
+> 更改项参数的自定义,比如:边框，点击效果，内容文字,颜色,圆角等
 """;
 
 class Demo extends StatefulWidget {
-  static const String routeName = '/element/Form/Button/OutlineButton';
+  static const String routeName = '/element/Form/Button/FloatingActionButton';
 
   @override
   _DemoState createState() => _DemoState();
@@ -62,66 +60,44 @@ class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
-      title: 'OutlineButton',
-      codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/OutlineButton/demo.dart',
-      child: allOutlineButtons(context,this),
-      docUrl: 'https://docs.flutter.io/flutter/material/OutlineButton-class.html',
+      title: 'FloatingActionButton',
+      // desc: _floatingActionTitle,
+      codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/FloatingActionButton/demo.dart',
+      child: allFloatingActionButtons(context,this),
+      //child: Text('123'),
+      docUrl: 'https://docs.flutter.io/flutter/material/FloatingActionButton-class.html',
     );
   }
 }
 
 /**
- * 所有的 OutlineButton 按钮
+ * 所有的 FloatingActionButton 按钮
  */
-Widget allOutlineButtons(BuildContext context,_DemoState that){
+Widget allFloatingActionButtons(BuildContext context,_DemoState that){
   final ShapeBorder buttonShape = drawShape(that.buttonShapeType);
   return Container(
     //padding: new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 0, right: 0),
       child: Column(
         //mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            MarkdownBody(data: _outlineText0),
-            textAlignBar(_outlineText1),
+            MarkdownBody(data: _floatingActionText0),
+            textAlignBar(_floatingActionText1),
             ButtonBar(
               alignment: MainAxisAlignment.spaceAround,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                outlineButton.OutlineButtonDefault(),
+                floatingActionButton.FloatingActionButtonDefault(),
                 SizedBox(width: 20.0), // 间距
-                outlineButton.OutlineButtonDefault(false),
+                floatingActionButton.FloatingActionButtonDefault(false),
               ],
             ),
-            textAlignBar(_outlineText2),
-            ButtonBar(
-              alignment: MainAxisAlignment.spaceAround,
-              //mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                outlineButton.OutlineButtonIconDefault(),
-                outlineButton.OutlineButtonIconDefault(false),
-              ],
-            ),
-            ButtonBar(
-              alignment: MainAxisAlignment.spaceAround,
-              //mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                outlineButton.OutlineButtonIconDefault(true, Icons.android),
-                outlineButton.OutlineButtonIconDefault(true, Icons.announcement),
-              ],
-            ),
-            textAlignBar(_outlineText3),
+            textAlignBar(_floatingActionText2),
             SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom('主要按钮',Colors.blue,buttonShape),
-            SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom('成功按钮',Colors.green,buttonShape),
-            SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom('信息按钮',Colors.grey,buttonShape),
-            SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom('警告按钮',Colors.orange,buttonShape),
-            SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom('危险按钮',Colors.pink,buttonShape),
-            SizedBox(height: 10.0),
-            outlineButton.OutlineButtonCustom( '点击切换，随机改变按钮的圆角,边框样式', Colors.blue, buttonShape,
-                    () => that.setButtonShapeType()),
+              floatingActionButton.FloatingActionButtonCustom('主要按钮',Colors.deepOrangeAccent,buttonShape),
+            SizedBox(height: 20.0),
+            textAlignBar(_floatingActionText3),
+            SizedBox(height: 20.0),
+              floatingActionButton.FloatingActionButtonCustom2('扩展按钮',Colors.deepOrangeAccent,buttonShape),
             SizedBox(height: 20.0)
           ])
   );
