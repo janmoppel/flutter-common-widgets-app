@@ -28,16 +28,6 @@ class Pagination extends StatelessWidget {
   ];
 
 
-//  @override
-//  void initState() { // 无状态widget 不会调用
-//    print('start');
-//    /// super.initState();
-//    arr.forEach((item) {
-//      bannerStories.add(StoryModel.fromJson(item));
-//    });
-//
-//  }
-
 
   List<Widget> _PageSelector(BuildContext context) {
     List<Widget> list = [];

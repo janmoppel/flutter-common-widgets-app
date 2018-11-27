@@ -36,12 +36,12 @@ class Sql extends BaseModel {
     String stringConditions = '';
 
     int index = 0;
-    print("condition>>> $conditions");
+    // print("condition>>> $conditions");
     conditions.forEach((key, value) {
       if (value == null) {
         return ;
       }
-      print("$key value.runtimeType: ${value.runtimeType}");
+      // print("$key value.runtimeType: ${value.runtimeType}");
       if (value.runtimeType == String) {
         stringConditions = '$stringConditions $key = "$value"';
       }
@@ -54,7 +54,7 @@ class Sql extends BaseModel {
       }
       index++;
     });
-    print("this is string condition for sql > $stringConditions");
+    // print("this is string condition for sql > $stringConditions");
 
     return await this.query(tableName, where: stringConditions);
   }
