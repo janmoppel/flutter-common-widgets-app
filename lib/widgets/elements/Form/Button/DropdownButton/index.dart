@@ -15,8 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import './demo.dart' as dropdownButton;
 
-const String _dropdownTitle =
-    'Dropdown button 示例';
 
 const String _dropdownText0 =
 """### **简介**
@@ -51,7 +49,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'DropdownButton',
-      desc: _dropdownTitle,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/DropdownButton/demo.dart',
       child: allDropdownButtons(context,this),
       docUrl: 'https://docs.flutter.io/flutter/material/DropdownButton-class.html',

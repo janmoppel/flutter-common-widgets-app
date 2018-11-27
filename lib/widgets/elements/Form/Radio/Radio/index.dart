@@ -30,7 +30,6 @@ class _Demo extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'title',
-      desc: 'material design 风格的单选按钮',
       child:  new Column(
         children: <Widget>[
           MarkdownBody(data: introA),

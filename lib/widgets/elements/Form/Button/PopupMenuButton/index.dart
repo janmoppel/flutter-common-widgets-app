@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import './demo.dart' as popupMenuButton;
 
-const String _title = 'PopupMenuButton 示例';
 const String _titleText0 = """
 ### **简介**
 > 按下时显示菜单
@@ -56,7 +55,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'PopupMenuButton',
-      desc: _title,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/RaisedButton/demo.dart',
       child: allPopupMenuButton(widget,this),
       docUrl: 'https://docs.flutter.io/flutter/material/PopupMenuButton-class.html',

@@ -65,7 +65,6 @@ class _Demo extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Rich Text',
-      desc: '富文本段落显示',
       docUrl: 'https://docs.flutter.io/flutter/widgets/RichText-class.html',
       codeUrl: '',
       child: new Column(
