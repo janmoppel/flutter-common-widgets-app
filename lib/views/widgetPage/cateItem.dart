@@ -46,7 +46,7 @@ class _CateItemList extends State<CateItemList> {
         new Row(
           children: [
             const SizedBox(
-              height: 50,
+              height: 50.0,
             ),
             new Expanded(
               child: new Container(
@@ -65,7 +65,7 @@ class _CateItemList extends State<CateItemList> {
           ],
         ),
         const SizedBox(
-          height: 10,
+          height: 10.0,
         ),
         ChildCateories(firstChildList),
       ],
@@ -116,7 +116,7 @@ class ChildCateories extends StatelessWidget {
       tiles.add(
         new Container(
           color: Colors.red,
-           height: 150,
+           height: 150.0,
            child:  new Row(
              children: rows
            ),
