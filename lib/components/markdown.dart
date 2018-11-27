@@ -1,5 +1,5 @@
 import 'package:flutter_markdown/flutter_markdown.dart' as md;
-import '../common/high-light-code.dart';
+import '../common/high_light_code.dart';
 import 'package:flutter/material.dart';
 
 /// 使用方法
