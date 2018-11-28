@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import '../routers/application.dart';
 
 class WidgetDemo extends StatelessWidget {
   final List<dynamic> contentList;
@@ -66,7 +67,8 @@ class WidgetDemo extends StatelessWidget {
           new IconButton(
             tooltip: 'github code',
             onPressed: () {
-              _launchURL(codeUrl);
+              print(Application.github['widgetsURL']+codeUrl);
+              _launchURL(Application.github['widgetsURL']+codeUrl);
             },
             icon: Icon(Icons.code),
           ),

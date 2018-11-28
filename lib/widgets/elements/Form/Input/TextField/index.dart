@@ -56,7 +56,7 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'TextField',
-      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Input/TextField/index.dart',
+      codeUrl: 'elements/Form/Input/TextField/text_field_demo.dart',
       contentList: [
         _textFieldText0,
         _textFieldText1,
