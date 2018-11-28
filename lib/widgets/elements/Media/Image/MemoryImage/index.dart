@@ -1,8 +1,8 @@
 /*
  * @Author: 一凨 
  * @Date: 2018-11-16 15:09:12 
- * @Last Modified by:   一凨 
- * @Last Modified time: 2018-11-16 15:09:12 
+ * @Last Modified by: 一凨
+ * @Last Modified time: 2018-11-27 21:19:24
  */
 import 'package:flutter/material.dart';
 import '../../../../../common/widget-demo.dart';
@@ -45,7 +45,7 @@ class _DemoState extends State<Demo> {
     return WidgetDemo(
       child: _buildContent(bytes),
       title: 'MemoryImage',
-      desc: 'MemoryImage 使用介绍',
+      // desc: 'MemoryImage 使用介绍',
       docUrl: 'https://docs.flutter.io/flutter/painting/MemoryImage-class.html',
       codeUrl:
           'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/develop/lib/widgets/elements/Media/Image/MemoryImage/index.dart?1542777213280',

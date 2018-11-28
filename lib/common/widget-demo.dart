@@ -6,14 +6,12 @@ class WidgetDemo extends StatelessWidget {
   final Widget child;
   final String docUrl;
   final String title;
-  final String desc;
   final String codeUrl;
 
   WidgetDemo(
       {Key key,
       @required this.title,
       @required this.child,
-      @required this.desc,
       @required this.codeUrl,
       @required this.docUrl})
       : super(key: key);
@@ -63,9 +61,8 @@ class WidgetDemo extends StatelessWidget {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Text(desc, style: TextStyle(fontSize: 15.5, height: 1.2,letterSpacing: 1.2)),
                   SizedBox(
-                    height: 20.0,
+                    height: 10.0,
                   ),
                   child,
                 ],

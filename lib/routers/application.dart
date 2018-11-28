@@ -1,7 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-
-
+import '../widgets/index.dart';
 class Application {
   static Router router;
   static TabController controller;
@@ -10,4 +9,5 @@ class Application {
     //'develop':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/develop/lib/widgets/',
     //'master':'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/tree/master/lib/widgets/'
   };
+
 }

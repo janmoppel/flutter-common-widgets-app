@@ -24,5 +24,6 @@ class AppText{
 class WidgetDemoColor {
   static const int fontColor = 0xFF607173;
   static const int iconColor = 0xFF607173;
-  static const int borderColor = 0xFFe6e6e6;
+  static const int borderColor = 0xFFEFEFEF;
+
 }

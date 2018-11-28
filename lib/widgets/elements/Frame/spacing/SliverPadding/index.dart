@@ -13,7 +13,7 @@ class _DemoState extends State<Demo> {
     print(products);
     return WidgetDemo(
       title: 'SliverPadding',
-      desc: 'Flutter 中的Slivers大家族基本都是配合CustomScrollView来实现的，而 SliverPadding 其实也就是Slivers大家族中的一类padding，这里我们结合SliverList使用，padding作用于每一个item',
+      // desc: 'Flutter 中的Slivers大家族基本都是配合CustomScrollView来实现的，而 SliverPadding 其实也就是Slivers大家族中的一类padding，这里我们结合SliverList使用，padding作用于每一个item',
       codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/spacing/SliverPadding/index.dart',
       child: new CustomScrollView(
         shrinkWrap: true,

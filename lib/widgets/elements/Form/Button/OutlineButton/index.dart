@@ -15,8 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import './demo.dart' as outlineButton;
 
-const String _outlineTitle =
-    'Outline button 示例';
 
 const String _outlineText0 =
 """### **简介**
@@ -65,7 +63,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'OutlineButton',
-      desc: _outlineTitle,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/OutlineButton/demo.dart',
       child: allOutlineButtons(context,this),
       docUrl: 'https://docs.flutter.io/flutter/material/OutlineButton-class.html',

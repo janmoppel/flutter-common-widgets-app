@@ -2,6 +2,7 @@ import 'Button/index.dart' as Button;
 import 'Text/index.dart' as Text;
 import 'Input/index.dart' as Input;
 import 'CheckBox/index.dart' as CheckBox;
+import 'Radio/index.dart' as Radio;
 
 List getWidgets() {
   List result = [];
@@ -9,5 +10,6 @@ List getWidgets() {
   result.addAll(Text.widgetPoints);
   result.addAll(Input.widgetPoints);
   result.addAll(CheckBox.widgetPoints);
+  result.addAll(Radio.widgetPoints);
   return result;
 }

@@ -18,7 +18,7 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Table',
-      desc: _desc,
+      // desc: _desc,
       codeUrl:
           'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/Table/Table/index.dart',
       child: Table(

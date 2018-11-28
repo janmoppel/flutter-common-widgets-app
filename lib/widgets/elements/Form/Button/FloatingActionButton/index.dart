@@ -61,7 +61,7 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'FloatingActionButton',
-      desc: _floatingActionTitle,
+      // desc: _floatingActionTitle,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/FloatingActionButton/demo.dart',
       child: allFloatingActionButtons(context,this),
       //child: Text('123'),

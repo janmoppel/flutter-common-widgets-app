@@ -54,7 +54,7 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Row',
-      desc: 'Layout-Row 使用',
+      // desc: 'Layout-Row 使用',
       codeUrl:
       'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Layout/Row/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/Row-class.html',

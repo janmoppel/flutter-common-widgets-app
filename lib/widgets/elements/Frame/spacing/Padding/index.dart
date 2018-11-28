@@ -23,7 +23,7 @@ class _DemoState extends State<Demo> {
         ),
       ),
       docUrl: 'https://docs.flutter.io/flutter/widgets/Padding-class.html',
-      desc: '通过给定的padding值来隔开子组件，\n通过EdgeInsets 类来计算 padding的大小,其实我们可以理解为 Padding 即为 Container+padding',
+      // desc: '通过给定的padding值来隔开子组件，\n通过EdgeInsets 类来计算 padding的大小,其实我们可以理解为 Padding 即为 Container+padding',
       codeUrl:
           'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/spacing/Padding/index.dart',
     );

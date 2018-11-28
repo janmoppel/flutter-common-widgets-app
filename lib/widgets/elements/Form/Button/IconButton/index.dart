@@ -15,8 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import './demo.dart' as iconButton;
 
-const String _iconTitle =
-    'Icon button 示例';
 
 const String _iconText0 =
 """### **简介**
@@ -56,7 +54,6 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'IconButton',
-      desc: _iconTitle,
       codeUrl: '${Application.github['widgetsURL']}elements/Form/Button/IconButton/demo.dart',
       child: allIconButtons(context,this),
       docUrl: 'https://docs.flutter.io/flutter/material/IconButton-class.html',
