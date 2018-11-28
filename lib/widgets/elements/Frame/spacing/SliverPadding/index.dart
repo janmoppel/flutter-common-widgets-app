@@ -1,6 +1,27 @@
+/*
+ * @Author: 一凨 
+ * @Date: 2018-11-28 20:26:16 
+ * @Last Modified by: 一凨
+ * @Last Modified time: 2018-11-28 20:39:28
+ */
 import 'package:flutter/material.dart';
-import './product_list.dart';
-import 'package:flutter_rookie_book/common/widget-demo.dart';
+import 'package:flutter_rookie_book/common/widget_demo.dart';
+import './sliverpadding_demo.dart';
+
+const contentDesc0 = '''
+### **简介**
+> SliverPadding 属于 Flutter Slivers大家族中的一个
+- SliverPadding 是 Slivers 大家族中的一类padding
+- 可以配合各种 Sliver成员使用
+''';
+
+const contentDesc1 = '''
+### **基本用法**
+> 这里我们结合Slivers家族中的 SliverList 来演示使用
+- Flutter 中的Slivers大家族基本都是配合CustomScrollView来实现一些自定义滚动效果
+- padding作用于每一个item
+- 对于有些特殊的sliver可能会有副作用，比如对于 ```pinned:true``` 的 SliverPersisitentHeader 设置可能会导致 APPBar与之前的sliver重叠
+''';
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Frame/spacing/SliverPadding';
@@ -10,65 +31,18 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
-    print(products);
     return WidgetDemo(
       title: 'SliverPadding',
-      // desc: 'Flutter 中的Slivers大家族基本都是配合CustomScrollView来实现的，而 SliverPadding 其实也就是Slivers大家族中的一类padding，这里我们结合SliverList使用，padding作用于每一个item',
-      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/spacing/SliverPadding/index.dart',
-      child: new CustomScrollView(
-        shrinkWrap: true,
-        slivers: <Widget>[
-          new SliverPadding(
-            padding: const EdgeInsets.fromLTRB(50.0,10.0,20.0,0.0),
-            sliver: new SliverList(
-              delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return _buildItem(context, products[index]);
-              },
-              childCount: products.length,
-            ),
-            ),
-          )
-        ],
-      ),
+      codeUrl: 'elements/Frame/spacing/SliverPadding/sliverpadding_demo.dart',
+      contentList: [
+        contentDesc0,
+        contentDesc1,
+        SliverPaddingDemo(),
+      ],
       docUrl:
           'https://docs.flutter.io/flutter/widgets/SliverPadding-class.html',
     );
   }
 
-  Widget _buildItem(BuildContext context,ProductItem product){
-     return  Container(
-      height: 100.0,
-      margin: const EdgeInsets.only(bottom: 5.0),
-      padding: const EdgeInsets.only(left: 10.0),
-      color: Colors.blueGrey,
-        child: Stack(
-          alignment: AlignmentDirectional.centerStart,
-          children: <Widget>[
-            Positioned(
-                right: 40.0,
-                child: Card(
-                  child: Center(
-                    child: Text(
-                      product.name,
-                      style: Theme.of(context).textTheme.title,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                )),
-            ClipRRect(
-              child: SizedBox(
-                width: 70.0,
-                height: 70.0,
-                child: Image.asset(
-                  product.asset,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            ),
-          ],
-        ),
-    );
-  }
+  
 }

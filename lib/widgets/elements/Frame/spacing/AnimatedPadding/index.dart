@@ -1,5 +1,24 @@
+/*
+ * @Author: 一凨 
+ * @Date: 2018-11-28 20:44:13 
+ * @Last Modified by: 一凨
+ * @Last Modified time: 2018-11-28 20:51:20
+ */
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
+import './animatedPadding_demo.dart';
+
+const contentDesc0 = '''
+### **简介**
+> 属于Flutter动画成员的一部分
+''';
+
+const contentDesc1 = '''
+### **基本用法**
+> 动画版本的Padding
+- 在给定的时间内，自动完成转换缩进到给定的padding值
+- 通过设置curve 来指定动画的运行速率动画
+''';
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Frame/spacing/AnimatedPadding';
@@ -7,48 +26,18 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-  double paddingValue;
-
-  void initState() {
-    super.initState();
-    paddingValue = 10.0;
-  }
-
-  _changePadding() {
-    if (paddingValue == 10.0) {
-      setState(() {
-        paddingValue = 100.0;
-      });
-    }else{
-      setState(() {
-        paddingValue = 10.0;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'AnimatedPadding',
-      child: Column(children: <Widget>[
-        AnimatedPadding(
-          padding: EdgeInsets.symmetric(horizontal: paddingValue, vertical: paddingValue),
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeInOut,
-          child: Container(
-            height: 200.0,
-            color: Colors.blueAccent,
-          ),
-        ),
-        RaisedButton(
-          onPressed: _changePadding,
-          child: Text('change padding'),
-        )
-      ]),
+      contentList: [
+        contentDesc0,
+        contentDesc1,
+        AnimatedPaddingDemo(),
+      ],
       docUrl:
           'https://docs.flutter.io/flutter/widgets/AnimatedPadding-class.html',
-          // desc: 'Padding 的动画版本，无论何时给定的更改，它都会在给定的持续时间内自动完成转换缩进',
-          codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Frame/spacing/AnimatedPadding/index.dart',
+      codeUrl: 'elements/Frame/spacing/AnimatedPadding/animatedPadding_demo.dart',
     );
   }
 }
