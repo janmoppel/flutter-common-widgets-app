@@ -87,7 +87,9 @@ class _CategoryHome extends State<CategoryHome> {
   void onWidgetTap(WidgetPoint widgetPoint) {
     String targetName = widgetPoint.name;
     String targetRouter = '/category/error/404';
+    print("widgetDemosList> ${widgetDemosList}");
     widgetDemosList.forEach((item) {
+      // print("targetRouter = item.routerName> ${[item.name,targetName]}");
       if (item.name == targetName) {
         targetRouter = item.routerName;
       }
