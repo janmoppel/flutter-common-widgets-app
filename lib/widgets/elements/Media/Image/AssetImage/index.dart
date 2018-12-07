@@ -5,13 +5,22 @@
  * @Last Modified time: 2018-11-16 15:09:12 
  */
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import '../../../../../common/widget_demo.dart';
+import './assetImage_demo.dart';
 
-const _assetImageDesc0 = '''
-> 为了自动执行像素密度感知资源分辨率，使用AssetImage指定图像，需要确保在控件树中的图片控件上方存在MaterialApp、WidgetsApp和MediaQuery控件
+const contentText0 = '''
+### **简介**
+> 从AssetBundle中获取图像，根据上下文来确定使用确切的图像
 
-## 使用命名资源文件去匹配不同像素的设备
+根据给定的一些资源，AssetImage 可以根据你给定的配置，然后根据设备的像素比率和大小，然后选择合适的资源文件
+''';
+
+const contentText1 = '''
+### **基本用法**
+> 从AssetBundle中获取图像，根据上下文来确定使用确切的图像
+
+#### 使用命名资源文件去匹配不同像素的设备
+
 以'Nx'的形式命名图片资源文件，其中N标识改资源文件的标称设备像素比率
 
 假如某一个应用程序使用命名为 heart.png 的图标，此图标的表示为1.0（主图标），以及 1.5和2.0像素比。然后我们在资源包中应如下命名：
@@ -30,7 +39,7 @@ const _assetImageDesc0 = '''
   icons/2.0x/heart.png
 ```
 
-## 获取资源文件
+#### 获取资源文件
 需要从package中获取资源文件，需要提供package的参数。我们需要在项目中的 pubspec.yaml 文件里加上具体的asset文件：
 
 ```
@@ -42,7 +51,7 @@ flutter:
 ```
 AssetImage('icons/heart.png');
 ```
-## 在package中的资源
+#### 在package中的资源
 如果需要从package中获取资源文件，必须提供package参数。加入下面的结构位于一个名为 my_icons 的包中，然后获取图像：
 ```
 AssetImage('icons/heart.png', package: 'my_icons')
@@ -62,14 +71,8 @@ assets:
 ```
 lib /是隐含的，因此它不应包含在 assets 路径中。
 
-## Demos
 
-
-### 作为背景图片使用
-''';
-
-const _assetImageDesc1 = '''
-### 结合Image使用
+> 一下demo分别作为背景图片和配合Image使用
 ''';
 
 class Demo extends StatefulWidget {
@@ -81,32 +84,14 @@ class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
-      child: _buildContent(),
+      contentList: [
+        contentText0,
+        contentText1,
+        AssetImageDemo(),
+      ],
       title: 'AssetImage',
-      // desc: 'AssetImage 使用介绍',
       docUrl: 'https://docs.flutter.io/flutter/painting/AssetImage-class.html',
-      codeUrl: '',
-    );
-  }
-
-  Widget _buildContent() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          MarkdownBody(data: _assetImageDesc0),
-          CircleAvatar(
-            backgroundImage: AssetImage('assets/images/food01.jpeg'),
-          ),
-          MarkdownBody(data: _assetImageDesc1),
-          Container(
-            child: Image(
-              image: AssetImage('assets/images/food02.jpeg'),
-              height: 300.0,
-              width: 300.0,
-            ),
-          )
-        ],
-      ),
+      codeUrl: 'elements/Media/Image/AssetImage/assetImage_demo.dart',
     );
   }
 }

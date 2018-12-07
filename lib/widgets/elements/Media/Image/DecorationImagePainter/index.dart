@@ -5,7 +5,12 @@
  * @Last Modified time: 2018-11-16 15:09:12 
  */
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
+import './decoration_image_painter_demo.dart';
+
+const contentText0 = '''
+### **简介**
+''';
 
 class Demo extends StatefulWidget {
   static const String routeName = '/element/Media/Image/DecorationImagePainter';
@@ -15,8 +20,11 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: null,
+    return WidgetDemo(
+       contentList: [],
+       docUrl: 'https://docs.flutter.io/flutter/painting/DecorationImagePainter-class.html',
+       codeUrl: 'elements/Media/Image/DecorationImagePainter/decoration_image_painter_demo.dart',
+       title:'DecorationImagePainter'
     );
   }
 }
