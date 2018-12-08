@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../common/widget_demo.dart';
 import './decoration_image_painter_demo.dart';
+import 'dart:ui';
 
 const contentText0 = '''
 ### **简介**
@@ -28,3 +29,4 @@ class _DemoState extends State<Demo> {
     );
   }
 }
+
