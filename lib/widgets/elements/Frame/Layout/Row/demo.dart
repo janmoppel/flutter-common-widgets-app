@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
  * LastUpdateTime: 2018/11/22
  * LastUpdateBy: xj.deng
  *
- * Describle:Align描述
+ * Describle:Row
  */
 class RowMainAxisAlignment extends StatelessWidget {
   final MainAxisAlignment status;
