@@ -27,35 +27,39 @@ class WidgetItemContainer extends StatelessWidget {
         addI = innerI + i;
         if (addI < length) {
           dynamic item = categories[addI];
-          _listRows.add(Expanded(
-            flex: 1,
-            child: WidgetItem(
-              title: item.name,
-              onTap: () {
-                if (isWidgetPoint) {
-                  String targetName = item.name;
-                  String targetRouter = '/category/error/404';
-                  widgetDemosList.forEach((item) {
-                    if (item.name == targetName) {
-                      targetRouter = item.routerName;
-                    }
-                  });
-                  Application.router.navigateTo(context, "${targetRouter}");
-                } else {
-                  Application.router
-                      .navigateTo(context, "/category/${item.name}");
-                }
-              },
-              index: addI,
-              totalCount: length,
-              rowLength: columnCount,
+          _listRows.add(
+            Expanded(
+              flex: 1,
+              child: WidgetItem(
+                title: item.name,
+                onTap: () {
+                  if (isWidgetPoint) {
+                    String targetName = item.name;
+                    String targetRouter = '/category/error/404';
+                    widgetDemosList.forEach((item) {
+                      if (item.name == targetName) {
+                        targetRouter = item.routerName;
+                      }
+                    });
+                    Application.router.navigateTo(context, "${targetRouter}");
+                  } else {
+                    Application.router
+                        .navigateTo(context, "/category/${item.name}");
+                  }
+                },
+                index: addI,
+                totalCount: length,
+                rowLength: columnCount,
+              ),
             ),
-          ));
+          );
         } else {
-          _listRows.add(Expanded(
-            flex: 1,
-            child: Container(),
-          ));
+          _listRows.add(
+            Expanded(
+              flex: 1,
+              child: Container(),
+            ),
+          );
         }
       }
       _listWidget.add(

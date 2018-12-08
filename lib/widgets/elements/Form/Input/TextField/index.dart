@@ -7,11 +7,10 @@
  * target: TextField 的示例
  * 对应文档地址:https://docs.flutter.io/flutter/material/TextField-class.html
  */
-import '../../../../../common/widget-demo.dart';
-import 'dart:math';
-import 'package:flutter/material.dart';
 
-import 'package:flutter_markdown/flutter_markdown.dart';
+import '../../../../../common/widget_demo.dart';
+import 'package:flutter/material.dart';
+import './text_field_demo.dart' ;
 
 
 const String _textFieldText0 =
@@ -23,7 +22,7 @@ const String _textFieldText0 =
 """;
 
 const String _textFieldText1 =
-"""### **默认 TextField**
+"""### **TextField 基本用法**
 > 参数的默认的按钮和禁用按钮
 - 默认情况下，文本字段具有在文本字段下方绘制分隔符的修饰。
 - 您可以使用装饰属性来控制装饰，例如通过添加标签或图标。如果将装饰属性设置为空，则将完全删除装饰，包括装饰引入的额外填充，以节省标签的空间。
@@ -31,7 +30,7 @@ const String _textFieldText1 =
 - 若要将TeXFieldField集成到其他FieldFieldWrices窗体中，请考虑使用TeTFrimeField。""";
 
 const String _textFieldText2 =
-"""### **自定义 TextField**
+"""### **TextField 高阶用法**
 > 实现稍微复杂点的效果，键盘就变成了数字优先，为输入框做一些其他的效果，如提示文字，icon、标签文字等
 - 增加一个keyboardType属性，把keyboardType设置为 TextInputType.number ，让TextField获得焦点的时候弹出的键盘就变成了数字优先。
 - 新增decoration属性，设置相关属性，可以发现当我们的TextField获得焦点时，图标会自动变色，提示文字会自动上移。
@@ -57,62 +56,16 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'TextField',
-      codeUrl: 'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/yifeng-0.0.4/lib/widgets/elements/Input/TextField/index.dart',
-      child: renderAll(context,this),
+      codeUrl: 'elements/Form/Input/TextField/text_field_demo.dart',
+      contentList: [
+        _textFieldText0,
+        _textFieldText1,
+        DefaultTextField(),
+        _textFieldText2,
+        CustomTextField()
+      ],
       docUrl: 'https://docs.flutter.io/flutter/material/TextField-class.html',
     );
   }
 }
 
-Widget renderAll(BuildContext context,_DemoState that) {
-  return Container(
-      child: Column(
-          children: <Widget>[
-            MarkdownBody(data: _textFieldText0),
-            SizedBox(height: 20.0),
-            MarkdownBody(data: _textFieldText1),
-            defaultTextField(),
-            MarkdownBody(data: _textFieldText2),
-            SizedBox(height: 20.0),
-            customTextField()
-          ]
-      ));
-}
-
-/*
-* 基本示例
-* */
-@override
-Widget defaultTextField() {
-  return new Container(
-      padding: const EdgeInsets.all(30.0),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,//文本是起始端对齐
-          children: <Widget>[
-            Text('下面是基本输入框：',style: TextStyle(fontSize: 15.5,height: 1.2,color:Colors.blue),textAlign:TextAlign.left),
-            TextField()
-          ])
-  );
-}
-
-/*
-* 稍微复杂些的 TextField
-* */
-Widget customTextField(){
-  void _textFieldChanged(String str) {
-    print(str);
-  }
-  return new Container(
-      padding: const EdgeInsets.all(30.0),
-      child:TextField(
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(10.0),
-            icon: Icon(Icons.text_fields),
-            labelText: '请输入你的姓名)',
-            helperText: '请输入你的真实姓名',
-      ),
-      onChanged: _textFieldChanged,
-      autofocus: false,
-  ));
-}

@@ -344,6 +344,7 @@ class _MaterialSearchInputState<T> extends State<MaterialSearchInput<T>> {
             isEmpty: _isEmpty(field),
             decoration: new InputDecoration(
               labelText: widget.placeholder,
+              border: InputBorder.none,
               errorText: field.errorText,
             ),
             child: _isEmpty(field)
