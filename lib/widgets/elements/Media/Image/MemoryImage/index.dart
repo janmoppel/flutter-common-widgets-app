@@ -2,22 +2,23 @@
  * @Author: 一凨 
  * @Date: 2018-11-16 15:09:12 
  * @Last Modified by: 一凨
- * @Last Modified time: 2018-11-27 21:19:24
+ * @Last Modified time: 2018-12-08 20:48:28
  */
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:typed_data';
+import '../../../../../common/widget_demo.dart';
+import './memory_image_demo.dart';
 
-const _assetImageDesc0 = '''
-> 将给定的Uint8List 缓冲区解码为图像，将其与给定的比例相关联
+const String _contentText0 = '''
+### **简介**
+> 将给定的Uint8List 缓冲区解码为图像的widget
+- 甚至我们也可以利用的来实现将Base64编码的图片展示出来（利用 Uint8List.fromtList 构造函数） 
+''';
 
-提供给MemoryImage后，不应更改提供的字节缓冲区，哟啊提供表示随时间变化的图像的ImageStream，可考虑创建ImageProvider的新子类，其load方法返回ImageStreamCompleter的子类，该子类可以处理多个图像
-
-Image.memory 用于MemoryImage支持的Image的简写
-
-## 读取展示bytes Image实例
+const String _contentText1 = '''
+### **基本用法**
+> demo中我们作为读取内存图片来展示
+- 提供给MemoryImage的字节不应该再有更改
+- 如果需要经常改变的图片，请使用ImageProvider下的子类
 ''';
 
 class Demo extends StatefulWidget {
@@ -26,49 +27,20 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-  Uint8List bytes;
-
-  void initState() {
-    super.initState();
-    rootBundle.load('assets/images/food01.jpeg').then((data) {
-      if (mounted) {
-        print(data);
-        setState(() {
-          bytes = data.buffer.asUint8List();
-        });
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
-      child: _buildContent(bytes),
+      contentList: [
+        _contentText0,
+        _contentText1,
+        MemoryImageDemo(),
+      ],
       title: 'MemoryImage',
       // desc: 'MemoryImage 使用介绍',
       docUrl: 'https://docs.flutter.io/flutter/painting/MemoryImage-class.html',
       codeUrl:
-          'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/develop/lib/widgets/elements/Media/Image/MemoryImage/index.dart?1542777213280',
-    );
-  }
-
-  Widget _buildContent(bytes) {
-    final decoration = new BoxDecoration(
-      image: bytes == null
-          ? null
-          : new DecorationImage(
-              image: new MemoryImage(bytes,scale: 1.0),
-            ),
-    );
-    return Column(
-      children: <Widget>[
-        MarkdownBody(data: _assetImageDesc0),
-        new Container(
-          width: 300.0,
-          height: 300.0,
-          decoration: decoration,
-        ),
-      ],
+          'elements/Media/Image/MemoryImage/index.dart?1542777213280',
     );
   }
 }

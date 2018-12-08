@@ -5,8 +5,9 @@
  */
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+// import 'package:flutter_markdown/flutter_markdown.dart';
 import '../routers/application.dart';
+import '../components/markdown.dart';
 
 class WidgetDemo extends StatelessWidget {
   final List<dynamic> contentList;
@@ -38,7 +39,7 @@ class WidgetDemo extends StatelessWidget {
     ];
     contentList.forEach((item) {
       if (item.runtimeType == String) {
-        _list.add(MarkdownBody(data: item));
+        _list.add(MarkdownBody(item));
         _list.add(
           SizedBox(
             height: 20.0,

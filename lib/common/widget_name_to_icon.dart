@@ -65,7 +65,7 @@ class WidgetName2Icon {
     "DecorationImage":Icons.picture_in_picture,
     "DecorationImagePainter":Icons.image,
     "ExactAssetImage":Icons.assessment,
-    "FadeInImage":Icons.fast_rewind,
+    "FadeInImage":Icons.flip,
     "FileImage":Icons.filter,
     "NetworkImage":Icons.network_wifi,
     "RawImage":Icons.text_rotation_down,
