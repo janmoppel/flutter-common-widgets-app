@@ -78,5 +78,18 @@ class WidgetName2Icon {
     "IconData":Icons.date_range,
     "IconThemeData":Icons.insert_comment,
     "Canvas":Icons.edit,
+    "Material":Icons.android,
+    "Cupertino":Icons.phone_iphone,
+    "Scroll":Icons.swap_vertical_circle,
+    "Tab":Icons.tab,
+    "Menu":Icons.menu,
+    "Grid":Icons.grid_on,
+    "Scaffold":Icons.local_convenience_store,
+    "Dialog":Icons.add_alert,
+    "Bar":Icons.border_horizontal,
+    "Card":Icons.credit_card,
+    "Panel":Icons.panorama_vertical,
+    "Navigation":Icons.navigation,
+    "List":Icons.list
   };
 }

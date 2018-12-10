@@ -45,7 +45,7 @@ class SecondPageState extends State<WidgetPage> {
     for (Cat item in categories) {
       tiles.add(new CateCard(category: item));
     }
-    return new Column(
+    return new ListView(
       children: tiles,
     );
   }

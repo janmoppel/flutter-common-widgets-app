@@ -42,6 +42,7 @@ class _CateCardState extends State<CateCard> {
         //首字母转为大写
         widget.category.name.substring(0, 1),
         widget.category.name.substring(0, 1).toUpperCase());
+        
     return Container(
       width: screenWidth,
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),

@@ -1,4 +1,3 @@
-
 /**
  * @author 一凨
  */
@@ -41,7 +40,7 @@ class WidgetItem extends StatelessWidget {
             width: 1.0, color: Color(WidgetDemoColor.borderColor)),
       );
     }
-     if (currentRow == totalRow && !isRight) {
+    if (currentRow == totalRow && !isRight) {
       _border = Border(
         right: const BorderSide(
             width: 1.0, color: Color(WidgetDemoColor.borderColor)),
@@ -56,24 +55,33 @@ class WidgetItem extends StatelessWidget {
         //首字母转为大写
         title.substring(0, 1),
         title.substring(0, 1).toUpperCase());
+    Icon widgetIcon;
+    if (WidgetName2Icon.icons[_widgetName] != null) {
+      widgetIcon = Icon(WidgetName2Icon.icons[_widgetName]);
+    } else {
+      widgetIcon = Icon(
+        Icons.crop,
+      );
+    }
     return InkWell(
       onTap: onTap,
       child: Container(
         decoration: new BoxDecoration(
           border: _buildBorder(context),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 30.0,horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+        height: 150.0,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Icon(WidgetName2Icon.icons[_widgetName]),
-            SizedBox(
-              height: 8.0,
-            ),
-            Text(_widgetName),
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              widgetIcon,
+              SizedBox(
+                height: 8.0,
+              ),
+              Text(_widgetName),
+            ],
+          ) ,
       ),
     );
   }
