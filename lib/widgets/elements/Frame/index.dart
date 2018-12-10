@@ -6,6 +6,8 @@ import 'Table/index.dart' as Table;
 import 'Align/index.dart' as Align;
 import 'Layout/index.dart' as Layout;
 import 'Stack/index.dart' as Stack;
+import 'Box/index.dart' as Box;
+
 
 List getWidgets() {
   List result = [];
@@ -16,5 +18,6 @@ List getWidgets() {
   result.addAll(Align.widgetPoints);
   result.addAll(Layout.widgetPoints);
   result.addAll(Stack.widgetPoints);
+  result.addAll(Box.widgetPoints);
   return result;
 }
