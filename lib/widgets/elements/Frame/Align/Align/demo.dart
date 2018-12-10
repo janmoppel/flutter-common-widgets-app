@@ -1,8 +1,4 @@
 import 'package:flutter/widgets.dart';
-
-<<<<<<< Updated upstream
-
-
 /**
  * Author: xiaojia.dxj
  * Date: 2018/11/22
