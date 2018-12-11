@@ -136,7 +136,7 @@ class PopupMenuButtonCustom extends StatelessWidget {
           });
         },
         // 默认情况下匹配IconButton的8 dps填充。在某些情况下，特别是在此按钮作为列表项的尾随元素出现的情况下，能够将填充设置为零是有用的。
-        padding:new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 0, right: 0),
+        padding:new EdgeInsets.only(bottom: 20.0, top: 20.0, left: 0.0, right: 0.0),
         //描述按下按钮时将发生的操作的文本。
         tooltip:'这是信息'
     );

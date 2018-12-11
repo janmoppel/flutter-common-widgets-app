@@ -29,7 +29,7 @@ class MaterialSearchResult<T> extends StatelessWidget {
       onTap: this.onTap,
       child: new Container(
         height: 64.0,
-        padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+        padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 10.0),
         child: new Row(
           children: <Widget>[
             new Container(width: 30.0, child: new Icon(icon)) ?? null,
