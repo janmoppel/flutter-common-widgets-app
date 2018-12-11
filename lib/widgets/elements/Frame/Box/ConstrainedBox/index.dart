@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import '../../../../../common/widget-demo.dart';
-
+import '../../../../../common/widget_demo.dart';
 
 const String _Text = """### **ConstrainedBox**
 > 添加额外的限制条件到child上
@@ -15,23 +13,20 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'ConstrainedBox',
-      codeUrl: '',
-      child: _ConstrainedBoxCreate(),
-      docUrl: 'https://docs.flutter.io/flutter/widgets/ConstrainedBox-class.html',
+      codeUrl: 'elements/Frame/Box/ConstrainedBox/demo.dart',
+      contentList: [_Text, _ConstrainedBoxCreate()],
+      docUrl:
+          'https://docs.flutter.io/flutter/widgets/ConstrainedBox-class.html',
     );
   }
 
   Column _ConstrainedBoxCreate() {
     return new Column(
       children: <Widget>[
-        MarkdownBody(
-          data: _Text,
-        ),
         ConstrainedBox(
           //制定一个指定大小的盒子，限定最大最小宽高
           constraints: const BoxConstraints(

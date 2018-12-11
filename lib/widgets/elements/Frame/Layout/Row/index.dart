@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import '../../../../../common/widget_demo.dart';
 import './demo.dart' as row;
 

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-<<<<<<< Updated upstream
+
 
 
 /**

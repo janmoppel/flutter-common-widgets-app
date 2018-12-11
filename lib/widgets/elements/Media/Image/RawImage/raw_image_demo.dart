@@ -4,6 +4,8 @@
  * @Last Modified by: 一凨
  * @Last Modified time: 2018-12-08 20:09:32
  */
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
