@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
 import './demo.dart' as TextBox;
 
 const String _Text = """### **TextBox简介**
@@ -23,8 +23,11 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'TextBox',
-      codeUrl: '',
-      child: _creatTexbox(),
+      codeUrl: 'elements/Frame/Box/TextBox/demo.dart',
+      contentList: [
+        _Text,
+        _creatTexbox(),
+      ],
       docUrl: 'https://docs.flutter.io/flutter/dart-ui/TextBox-class.html',
     );
   }

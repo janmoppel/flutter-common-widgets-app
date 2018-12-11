@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
 import './demo.dart' as sizeBox;
 
 class Demo extends StatefulWidget {
@@ -15,8 +15,10 @@ class _DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Table',
-      codeUrl: '',
-      child: _SizeBoxCreate(),
+      codeUrl: 'elements/Frame/Box/SizedBox/demo.dart',
+      contentList: [
+        _SizeBoxCreate(),
+      ],
       docUrl: 'https://docs.flutter.io/flutter/widgets/SizedBox-class.html',
     );
   }

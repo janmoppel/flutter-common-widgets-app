@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
 import './demo.dart' as decoratedBox;
 
 const String _Text = """### **DecoratedBox**
@@ -14,14 +13,16 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-  String _desc = """DecoratedBox""";
 
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'DecoratedBox',
-      codeUrl: '',
-      child: _DecoratedBoxCreate(),
+      codeUrl: 'elements/Frame/Box/DecoratedBox/demo.dart',
+      contentList: [
+        _Text,
+        _DecoratedBoxCreate(),
+      ],
       docUrl: 'https://docs.flutter.io/flutter/widgets/DecoratedBox-class.html',
     );
   }
@@ -29,9 +30,6 @@ class _DemoState extends State<Demo> {
   Column _DecoratedBoxCreate() {
     return new Column(
       children: <Widget>[
-        MarkdownBody(
-          data: _Text,
-        ),
         Container(
           height: 200.0,
           width: 200.0,

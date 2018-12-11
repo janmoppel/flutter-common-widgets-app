@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import '../../../../../common/widget-demo.dart';
+import '../../../../../common/widget_demo.dart';
 import './demo.dart' as sizeBox;
 
 const String _Text = """### **SizeBox简介**
@@ -18,15 +17,11 @@ const String _Text0 = """### **SizeOverflowBox简介**
 > alignment：对齐
 > size： 设置部件大小
 - ex:为方便看效果，现设置幕布大小为(Container)200*50。图一
-""";
 
-const String _Text1 = """### 
 - ex:图一，基础上添加一个不设置size属性的SizeOverflowBox。图二
-""";
-const String _Text2 = """### 
+
 - ex:图二，添加size属性，100*20,图三
-""";
-const String _Text3 = """### 
+
 - ex:图三，添加 alignment: Alignment.center,
 """;
 
@@ -37,13 +32,16 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'SizeOverflowBox',
-      codeUrl: '',
-      child: _sizedOverflowBoxCreate(),
+      codeUrl: 'elements/Frame/Box/SizeOverflowBox/demo.dart',
+      contentList: [
+        _Text,
+        _Text0,
+        _sizedOverflowBoxCreate(),
+      ],
       docUrl: 'https://docs.flutter.io/flutter/widgets/SizedBox-class.html',
     );
   }
@@ -51,24 +49,17 @@ class _DemoState extends State<Demo> {
   Column _sizedOverflowBoxCreate() {
     return new Column(
       children: <Widget>[
-        MarkdownBody(
-          data: _Text,
-        ),
         sizeBox.SizeBoxDefault(
           curWidth: 200.0,
           curHeight: 50.0,
         ),
         SizedBox(height: 20.0),
-        MarkdownBody(
-          data: _Text0,
-        ),
         Container(
           margin: new EdgeInsets.only(top: 10.0),
           color: Color(0xff880e4f),
           width: 200.0,
           height: 50.0,
         ),
-        MarkdownBody(data: _Text1),
         Container(
           margin: new EdgeInsets.only(top: 10.0),
           color: Color(0xff880e4f),
@@ -79,7 +70,6 @@ class _DemoState extends State<Demo> {
             text: "SizeBox",
           ),
         ),
-        MarkdownBody(data: _Text2),
         Container(
           margin: new EdgeInsets.only(top: 10.0),
           color: Color(0xff880e4f),
@@ -91,7 +81,6 @@ class _DemoState extends State<Demo> {
             curSizeHeight: 20.0,
           ),
         ),
-        MarkdownBody(data: _Text3),
         Container(
           margin: new EdgeInsets.only(top: 10.0),
           color: Color(0xff880e4f),

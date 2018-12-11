@@ -34,12 +34,12 @@ class Demo extends StatefulWidget {
 }
 
 class _DemoState extends State<Demo> {
-
   @override
   Widget build(BuildContext context) {
     return WidgetDemo(
       title: 'Align',
-      codeUrl:'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Align/Align/demo.dart',
+      codeUrl:
+          'https://github.com/alibaba-paimai-frontend/flutter-common-widgets-app/blob/dev/sanlu-0.0.4/lib/widgets/elements/Frame/Align/Align/demo.dart',
       docUrl: 'https://docs.flutter.io/flutter/widgets/Align-class.html',
       child: new Container(
         child: _AlignCreate(),
@@ -51,32 +51,35 @@ class _DemoState extends State<Demo> {
     return new Column(
       children: <Widget>[
         MarkdownBody(data: _flatText0),
-
         SizedBox(height: 10.0),
         new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            align.AlignAlignment(Alignment.center,'center'),
-            align.AlignAlignment(Alignment.centerLeft,'centerLeft'),
-            align.AlignAlignment(Alignment.centerRight,'centerRight'),
-            align.AlignAlignment(Alignment.bottomCenter,'btCenter'),
-
+            align.AlignAlignment(Alignment.center, 'center'),
+            align.AlignAlignment(Alignment.centerLeft, 'centerLeft'),
 
           ],
         ),
-        SizedBox(height:10.0),
+        SizedBox(height: 10.0),
         new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            align.AlignAlignment(Alignment.topCenter,'topCenter'),
-            align.AlignAlignment(Alignment.topLeft,'topLeft'),
-            align.AlignAlignment(Alignment.topRight,'topRight'),
-            align.AlignAlignment(Alignment.bottomLeft,'bottomLeft'),
+            align.AlignAlignment(Alignment.centerRight, 'centerRight'),
+            align.AlignAlignment(Alignment.bottomCenter, 'btCenter'),
+            align.AlignAlignment(Alignment.topCenter, 'topCenter'),
 
           ],
         ),
-        SizedBox(height:10.0),
-
+        SizedBox(height: 10.0),
+        new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            align.AlignAlignment(Alignment.topLeft, 'topLeft'),
+            align.AlignAlignment(Alignment.topRight, 'topRight'),
+            align.AlignAlignment(Alignment.bottomLeft, 'bottomLeft'),
+          ],
+        ),
+        SizedBox(height: 10.0),
         MarkdownBody(data: _flatText1),
         Container(
           margin: new EdgeInsets.only(top: 20.0, bottom: 20.0),
@@ -87,11 +90,11 @@ class _DemoState extends State<Demo> {
           ),
         ),
         MarkdownBody(data: _flatText2),
-        align.AlignFactor( Alignment.topLeft,2.0,2.0,'topleft'),
+        align.AlignFactor(Alignment.topLeft, 2.0, 2.0, 'topleft'),
         MarkdownBody(data: _flatText3),
-        align.AlignFactor( Alignment.topRight,null,null,'topleft'),
-        align.AlignFactor( Alignment.center,null,null,'center'),
-        align.AlignFactor( Alignment.bottomLeft,null,null,'bottomLeft'),
+        align.AlignFactor(Alignment.topRight, null, null, 'topleft'),
+        align.AlignFactor(Alignment.center, null, null, 'center'),
+        align.AlignFactor(Alignment.bottomLeft, null, null, 'bottomLeft'),
       ],
     );
   }
